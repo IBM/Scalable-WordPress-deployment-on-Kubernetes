@@ -20,8 +20,8 @@ This scenario provides instructions for the following tasks:
 
 - Create local persistent volumes to defibe persistent disks.
 - Create a secret to protect sensitive data.
-- Create and deploy the WordPress frondend with one pod.
-- Create and deploy the MySQL database with one pod.
+- Create and deploy the WordPress frondend with one or more pods.
+- Create and deploy the MySQL database with one more pods.
 
 
 ## Time required
@@ -95,7 +95,11 @@ This tutorial is intended for software developers and network administrators who
 
 9. Access the external link: 
 
-    If you do not have a SoftLayer account and you do not have a LoadBalancer endpoint. You can go to the WordPress service in your Kubernetes dashboard and press edit (or you can run `kubectl edit services wordpress` on your terminal). Under `spec`, change `type: LoadBalancer` to `type: NodePort` (You could also change your NodePort number under `spec`/`ports`/`0`/`nodePort` ).
+    If you do not have a SoftLayer account and you do not have a LoadBalancer endpoint. You can create a NodePort by running 
+    ```bash
+    $ kubectl edit services wordpress
+    ```
+    Under `spec`, change `type: LoadBalancer` to `type: NodePort` (You could also change your NodePort number under `spec`/`ports`/`nodePort`).
 
     You can obtain your cluster's IP address using
 
@@ -114,25 +118,36 @@ This tutorial is intended for software developers and network administrators who
     ```
 
     Congratulation. Now you can use the link **http://[IP]:[port number]** to access your WordPress site.
+ 
+ 	> **Note:** It can take up to 5 minutes for the pods to be fully functioning.
     
-    9.1. (Optional) If you do not want to use an external link, you can open WordPress on your local machine with limited functionality. First, create a proxy on your local machine by running
-    ```bash
-    kubectl proxy 
-    ```
-    > **Note 1:** The default port number is 8001. You could use --port=[port number] to specify a port.
-    > 
-    > **Note 2:** You also can add & at the end to run the proxy in the background.
-    > 
-    > **Note 3:** If you are not sure kubectl proxy is running, use the command ps to check your current process status.
 
-    Now you can use `http://localhost:8001/api/v1/proxy/namespaces/default/pods/[your Wordpress pod name]` to open Wordpress on your local browser. 
+
+10. (Optional) If you have more resources in your cluster and you want to scale up and make your WordPress site more stable, you can run the following commands to check your current deployments.
+    ```bash
+    $ kubectl get deployments
+    NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+    wordpress         1         1         1            1           23h
+    wordpress-mysql   1         1         1            1           23h
+    ```
+ 
+ 	Now, you can run the following commands to scale up for WordPress frontend.
+    ```bash
+    $ kubectl scale deployments/wordpress --replicas=2
+    deployment "wordpress" scaled
+    $ kubectl get deployments
+    NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+    wordpress         2         2         2            2           23h
+    wordpress-mysql   1         1         1            1           23h
+	```
+    As you can see, we now have 2 pods that run the WordPress frontend. You can do the same thing with wordpress-mysql. 
     
-    > **Note:** If you use a different port, make sure to change 8001 to your own port number.
+    > **Note:** If you are a free tier user, we recommend you to scale up to 2 pods per deployment since free tier users have very limited resources.
 
 
 ## Troubleshooting
 
-If you accidentally created a password with newlines and you can not authorized your MySQL service, you can delete your current secret using
+If you accidentally created a password with newlines and you can not authorize your MySQL service, you can delete your current secret using
 
 ```bash
 $ kubectl delete secret mysql-pass
