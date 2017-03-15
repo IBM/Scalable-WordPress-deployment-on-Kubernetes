@@ -18,9 +18,9 @@ If you have not setup the Kubernetes cluster, please follow the [Creating a Kube
 
 This scenario provides instructions for the following tasks:
 
-- Create local persistent volumes to defibe persistent disks.
+- Create local persistent volumes to define persistent disks.
 - Create a secret to protect sensitive data.
-- Create and deploy the WordPress frondend with one or more pods.
+- Create and deploy the WordPress frontend with one or more pods.
 - Create and deploy the MySQL database with one more pods.
 
 
@@ -119,9 +119,8 @@ This tutorial is intended for software developers and network administrators who
 
     Congratulation. Now you can use the link **http://[IP]:[port number]** to access your WordPress site.
  
- 	> **Note:** It can take up to 5 minutes for the pods to be fully functioning.
+     > **Note:** It can take up to 5 minutes for the pods to be fully functioning.
     
-
 
 10. (Optional) If you have more resources in your cluster and you want to scale up and make your WordPress site more stable, you can run the following commands to check your current deployments.
     ```bash
@@ -131,7 +130,7 @@ This tutorial is intended for software developers and network administrators who
     wordpress-mysql   1         1         1            1           23h
     ```
  
- 	Now, you can run the following commands to scale up for WordPress frontend.
+     Now, you can run the following commands to scale up for WordPress frontend.
     ```bash
     $ kubectl scale deployments/wordpress --replicas=2
     deployment "wordpress" scaled
@@ -139,7 +138,7 @@ This tutorial is intended for software developers and network administrators who
     NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
     wordpress         2         2         2            2           23h
     wordpress-mysql   1         1         1            1           23h
-	```
+    ```
     As you can see, we now have 2 pods that run the WordPress frontend. You can do the same thing with wordpress-mysql. 
     
     > **Note:** If you are a free tier user, we recommend you to scale up to 2 pods per deployment since free tier users have very limited resources.
