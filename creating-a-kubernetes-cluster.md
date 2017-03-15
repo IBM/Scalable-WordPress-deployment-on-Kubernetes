@@ -28,12 +28,13 @@ Install the IBM Bluemix Container Service CLI, the image registry CLI, and their
 
 6. To create Kubernetes clusters, and manage worker nodes, install the Bluemix Kubernetes plug-in. The prefix for running commands by using the Bluemix Kubernetes plug-in is `bx cs`. 
     ```bash
-    $ bx plugin install cs -r Bluemix
+    $ bx plugin repo-add stage https://plugins.stage1.ng.bluemix.net
+    $ bx plugin install cs -r stage
     ```
 
 7. Initialize the Bluemix Kubernetes plug-in. 
 	```bash
-	$ bx cs init
+	$ bx cs init --host https://us-south.containers.bluemix.net
 	```
 
 8. To view a local version of the Kubernetes dashboard and to deploy apps into your clusters, install the [Kubernetes CLI](https://kubernetes.io/docs/user-guide/prereqs/). The prefix for running commands by using the Kubernetes CLI is kubectl.

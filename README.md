@@ -95,7 +95,7 @@ This tutorial is intended for software developers and network administrators who
 
 9. Access the external link: 
 
-    If you do not have a SoftLayer account and you do not have a LoadBalancer endpoint. You can go to the WordPress service in your Kubernetes dashboard and press edit (or you can run kubectl edit services wordpress on your terminal). Under `spec`, change `type: LoadBalancer` to `type: NodePort` (You could also change your NodePort number under `spec`/`ports`/`0`/`nodePort` ).
+    If you do not have a SoftLayer account and you do not have a LoadBalancer endpoint. You can go to the WordPress service in your Kubernetes dashboard and press edit (or you can run `kubectl edit services wordpress` on your terminal). Under `spec`, change `type: LoadBalancer` to `type: NodePort` (You could also change your NodePort number under `spec`/`ports`/`0`/`nodePort` ).
 
     You can obtain your cluster's IP address using
 
