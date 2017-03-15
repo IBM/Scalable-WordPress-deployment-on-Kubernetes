@@ -1,6 +1,6 @@
 # Container Service Wordpress Sample
 
-This tutorial demonstrates the how to deploy WordPress and MySQL on Kubernetes cluster with the capability of IBM Bluemix Container Service. The WordPress uses MySQL as the backend and stores sensitive data into the persistent disks.
+This tutorial demonstrates how to deploy WordPress and MySQL on Kubernetes cluster with the capability of IBM Bluemix Container Service. The WordPress uses MySQL as the backend and stores sensitive data into the persistent disks.
 
 With IBM® Bluemix® Container Service, you can deploy and manage your own Kubernetes cluster in the cloud that lets you automate the deployment, operation, scaling, and monitoring of containerized apps over a cluster of independent compute hosts called worker nodes. 
 
@@ -114,6 +114,20 @@ This tutorial is intended for software developers and network administrators who
     ```
 
     Congratulation. Now you can use the link **http://[IP]:[port number]** to access your WordPress site.
+    
+    9.1. (Optional) If you do not want to use an external link, you can open WordPress on your local machine with limited functionality. First, create a proxy on your local machine by running
+    ```bash
+    kubectl proxy 
+    ```
+    > **Note 1:** The default port number is 8001. You could use --port=[port number] to specify a port.
+    > 
+    > **Note 2:** You also can add & at the end to run the proxy in the background.
+    > 
+    > **Note 3:** If you are not sure kubectl proxy is running, use the command ps to check your current process status.
+
+    Now you can use `http://localhost:8001/api/v1/proxy/namespaces/default/pods/[your Wordpress pod name]` to open Wordpress on your local browser. 
+    
+    > **Note:** If you use a different port, make sure to change 8001 to your own port number.
 
 
 ## Creating a Kubernetes Cluster 
@@ -275,4 +289,4 @@ persistentvolume "local-pv-1" deleted
 persistentvolume "local-pv-2" deleted
 ```
 
-If you have your proxy running, you can open your Kubernetes dashboard via **http://localhost:{port number}/ui**  (Default port is 8001)
+If you have your proxy running, you can open your Kubernetes dashboard via `http://localhost:[port number]/ui`  (Default port is 8001)
