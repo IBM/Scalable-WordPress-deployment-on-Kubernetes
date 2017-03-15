@@ -95,7 +95,7 @@ This tutorial is intended for software developers and network administrators who
 
 9. Access the external link: 
 
-    If you do not have a SoftLayer account and you do not have a LoadBalancer endpoint. You can create a NodePort by running 
+    If you do not have a SoftLayer account and you do not have a LoadBalancer endpoint, you can create a NodePort by running 
     ```bash
     $ kubectl edit services wordpress
     ```
@@ -122,7 +122,7 @@ This tutorial is intended for software developers and network administrators who
      > **Note:** It can take up to 5 minutes for the pods to be fully functioning.
     
 
-10. (Optional) If you have more resources in your cluster and you want to scale up and make your WordPress site more stable, you can run the following commands to check your current deployments.
+10. (Optional) If you have more resources in your cluster, and you want to scale up your WordPress website, you can run the following commands to check your current deployments.
     ```bash
     $ kubectl get deployments
     NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
@@ -141,7 +141,7 @@ This tutorial is intended for software developers and network administrators who
     ```
     As you can see, we now have 2 pods that run the WordPress frontend. 
     
-    > **Note:** If you are a free tier user, we recommend you to scale up to 2 pods since free tier users have very limited resources.
+    > **Note:** If you are a free tier user, we recommend you only scale up to 2 pods since free tier users have very limited resources.
     >
     > **Note:** We do not recommend you to scale up MySQL unless you know how to separate the InnoDB data for each MySQL pods.
 
