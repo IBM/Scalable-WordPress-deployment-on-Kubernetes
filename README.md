@@ -21,7 +21,7 @@ This scenario provides instructions for the following tasks:
 - Create local persistent volumes to define persistent disks.
 - Create a secret to protect sensitive data.
 - Create and deploy the WordPress frontend with one or more pods.
-- Create and deploy the MySQL database with one more pods.
+- Create and deploy the MySQL database.
 
 
 ## Time required
@@ -139,9 +139,11 @@ This tutorial is intended for software developers and network administrators who
     wordpress         2         2         2            2           23h
     wordpress-mysql   1         1         1            1           23h
     ```
-    As you can see, we now have 2 pods that run the WordPress frontend. You can do the same thing with wordpress-mysql. 
+    As you can see, we now have 2 pods that run the WordPress frontend. 
     
-    > **Note:** If you are a free tier user, we recommend you to scale up to 2 pods per deployment since free tier users have very limited resources.
+    > **Note:** If you are a free tier user, we recommend you to scale up to 2 pods since free tier users have very limited resources.
+    >
+    > **Note:** We do not recommend you to scale up MySQL unless you know how to separate the InnoDB data for each MySQL pods.
 
 
 ## Troubleshooting
