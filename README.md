@@ -96,10 +96,14 @@ This tutorial is intended for software developers and network administrators who
 9. Access the external link: 
 
     If you do not have a SoftLayer account and you do not have a LoadBalancer endpoint, you can create a NodePort by running 
+    
     ```bash
     $ kubectl edit services wordpress
+    service "wordpress" edited
     ```
     Under `spec`, change `type: LoadBalancer` to `type: NodePort` (You could also change your NodePort number under `spec`/`ports`/`nodePort`).
+
+	> **Note:** Make sure you have `service "wordpress" edited` shown after editing the yaml file because that means the yaml file is successfully edited without any typo and connection errors.
 
     You can obtain your cluster's IP address using
 
