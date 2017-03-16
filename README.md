@@ -145,9 +145,9 @@ This tutorial is intended for software developers and network administrators who
     ```
     As you can see, we now have 2 pods that run the WordPress frontend. 
     
-    > **Note:** If you are a free tier user, we recommend you only scale up to 2 pods since free tier users have very limited resources.
+    > **Note:** If you are a free tier user, we recommend you only scale up to 10 pods since free tier users have limited resources.
     >
-    > **Note:** We do not recommend you to scale up MySQL unless you know how to separate the InnoDB data for each MySQL pods.
+    > **Note:** We do not recommend you to scale up MySQL unless you know how to separate the InnoDB data for each MySQL pod.
 
 
 ## Troubleshooting
