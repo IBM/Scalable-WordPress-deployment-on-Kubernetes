@@ -1,0 +1,10 @@
+{
+  "language": "bash",
+  "script": [
+    "bash quickstart.sh"
+  ],
+  "group": "stable",
+  "dist": "precise",
+  "os": "linux"
+}
+
