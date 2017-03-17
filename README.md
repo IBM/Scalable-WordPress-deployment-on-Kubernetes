@@ -93,9 +93,9 @@ This tutorial is intended for software developers and network administrators who
     wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
     ```
     
-9. ##### Access the external link: 
+### Access the external link: 
 
-    If you do not have a SoftLayer account and you do not have a LoadBalancer endpoint, you can create a NodePort by running 
+9. If you do not have a SoftLayer account and you do not have a LoadBalancer endpoint, you can create a NodePort by running 
     
     ```bash
     $ kubectl edit services wordpress
