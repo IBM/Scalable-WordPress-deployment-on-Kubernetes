@@ -33,7 +33,7 @@ This tutorial is intended for software developers and network administrators who
 
 ## Getting Started with WordPress on Kubernetes
 
-*Quickstart option:* In this repository, run `bash quickstart.sh` and move on to [step 9](#Access-the-external-link).
+*Quickstart option:* In this repository, run `bash quickstart.sh` and move on to [step 9](#access-the-external-link).
 
 1. Get the "mysql-wordpress-pd" example from Kubernetes's Github, you can use the following commands.
 
