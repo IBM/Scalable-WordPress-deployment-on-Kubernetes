@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/IBM/wordpress-sample.svg?branch=master)](https://travis-ci.org/IBM/wordpress-sample)
+
 # Container Service Wordpress Sample
 
 This tutorial demonstrates how to deploy WordPress and MySQL on Kubernetes cluster with the capability of IBM Bluemix Container Service. The WordPress uses MySQL as the backend and stores sensitive data into the persistent disks.
@@ -24,16 +26,14 @@ This scenario provides instructions for the following tasks:
 - Create and deploy the MySQL database.
 
 
-## Time required
-
-20 minutes
-
 ## Audience
 
 This tutorial is intended for software developers and network administrators who have never deployed an application on Kubernetes cluster before.
 
 
-## Getting Started with WordPress on Kubernetes:
+## Getting Started with WordPress on Kubernetes
+
+*Quickstart option:* In this repository, run `bash quickstart.sh` and move on to [step 9](#Access-the-external-link).
 
 1. Get the "mysql-wordpress-pd" example from Kubernetes's Github, you can use the following commands.
 
@@ -92,8 +92,8 @@ This tutorial is intended for software developers and network administrators who
     wordpress-3772071710-58mmd         1/1       Running   0          17s
     wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
     ```
-
-9. Access the external link: 
+    
+9. ##### Access the external link: 
 
     If you do not have a SoftLayer account and you do not have a LoadBalancer endpoint, you can create a NodePort by running 
     
