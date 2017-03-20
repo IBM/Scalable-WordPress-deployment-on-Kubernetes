@@ -1,7 +1,9 @@
 language: bash
 sudo: required
+before_install:
+- openssl aes-256-cbc -K $encrypted_debede673199_key -iv $encrypted_debede673199_iv -in install.sh.enc -out install.sh -d
 before_script:
-  secure: ohIx+FgWIz1ewQz+JSbcql4cealeNH8yNSO8lG4BVyc8T1Ba02Y/QOPnrQGNg7voWMYclfWbnqyTBhGyD+/TG6Gxw2RsQseLRCz/Z8MCAuMwJr7wSVswOmXp49X96vituHx1FKIb4VurS4EQRsj3+tI1tISu5x4xRHtFgJ62mErGRGHYkM+TY0XvtPECpsKal5PiCKmpmL1YlUEP+2uV+UMGM5lkGCNOS6PAwKcnC65/Ez7DMb3U80Nn6Ux6p4CZnKFECYaj85t6ZZWLYnIGi4h1HHkRTxcC30pyWubrFbmFrl4sVeKb5L1efT6RtbgeQ7RxOcA8uquTIAB6sX+fKCi1Y6qwpCySSnKqT3ypBWecssLbyd51dHsvZOVVdumhb2IwXFARhekjcW34y/TTQ57Sd6BQh5/jC/9umyZSx/WYu/1vnNaYVCT4qjY9aa6oeTe5XbxL0r+M/fBbUQhzb3EPwbQZqIS5QKZTTejIhd2XXYrL2hU6QbrzTM4OtR1AwBwPLaZxVyheGfLPcK90E6UTsjWHZHFf5zMBP0OajZ+lZv4eViE8LD7HQDgIq0cIexwgh8C2MsSFOCKGIf0U6cdA1AeKaWbt/tR+z13jK/EsnMvH7lvB/b86qOD/EJ+qHgTR8HUzbpANKfe/8szxLQHIB1a/izTwTARlQqZadI0=
+- bash install.sh
 script:
 - bash quickstart.sh
 group: stable
