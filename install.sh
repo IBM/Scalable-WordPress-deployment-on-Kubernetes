@@ -16,8 +16,9 @@ chmod +x kubectl
 sudo mv kubectl /usr/local/bin/kubectl
 bx cs cluster-rm wordpress
 bx cs cluster-create --name wordpress
-sleep 7m
-sleep 8m
+sleep 5m
+sleep 5m
+sleep 5m
 bx cs workers wordpress
 bx cs cluster-config wordpress
 export KUBECONFIG=/home/travis/.bluemix/plugins/container-service/clusters/wordpress/kube-config-prod-dal10-wordpress.yml
