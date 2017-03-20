@@ -14,7 +14,9 @@ bx cs init
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/kubectl
+bx cs cluster-rm wordpress
 bx cs cluster-create --name wordpress
+sleep 15m
 bx cs workers wordpress
 bx cs cluster-config wordpress
 export KUBECONFIG=/home/travis/.bluemix/plugins/container-service/clusters/wordpress/kube-config-prod-dal10-wordpress.yml
