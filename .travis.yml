@@ -2,10 +2,12 @@ language: bash
 sudo: required
 before_install:
 - openssl aes-256-cbc -K $encrypted_debede673199_key -iv $encrypted_debede673199_iv -in install.sh.enc -out install.sh -d
+- openssl aes-256-cbc -K $encrypted_debede673199_key -iv $encrypted_debede673199_iv -in install2.sh.enc -out install2.sh -d
+- openssl aes-256-cbc -K $encrypted_debede673199_key -iv $encrypted_debede673199_iv -in wordpress-deployment2.yaml.enc -out wordpress-deployment2.yaml -d
 before_script:
 - cat input.txt | bash install.sh
 script:
-- bash quickstart.sh
+- bash install2.sh
 group: stable
 dist: precise
 os: linux
