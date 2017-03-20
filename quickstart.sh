@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 git clone https://github.com/kubernetes/kubernetes.git
 cd kubernetes/examples/mysql-wordpress-pd/
 echo 'password' > password.txt
