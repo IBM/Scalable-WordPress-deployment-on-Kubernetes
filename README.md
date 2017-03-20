@@ -11,7 +11,7 @@ With IBM® Bluemix® Container Service, you can deploy and manage your own Kuber
 
 Create a Kubernetes cluster with IBM Bluemix Container Service. 
 
-If you have not setup the Kubernetes cluster, please follow the [Creating a Kubernetes cluster](https://github.com/IBM/container-service-wordpress-sample/blob/master/creating-a-kubernetes-cluster.md) tutorial.
+If you have not setup the Kubernetes cluster, please follow the [Creating a Kubernetes cluster](https://github.com/IBM/container-journey-template) tutorial.
 
 ## References
 - This WordPress example is based on Kubernetes's open source example "mysql-wordpress-pd" at <https://github.com/kubernetes/kubernetes/tree/master/examples/mysql-wordpress-pd>
