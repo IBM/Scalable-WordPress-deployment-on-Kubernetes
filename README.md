@@ -1,5 +1,10 @@
 [![Build Status](https://travis-ci.org/IBM/wordpress-sample.svg?branch=master)](https://travis-ci.org/IBM/wordpress-sample)
 
+
+
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/wordpress-sample)
+
+
 # Container Service Wordpress Sample
 
 This tutorial demonstrates how to deploy WordPress and MySQL on Kubernetes cluster with the capability of IBM Bluemix Container Service. The WordPress uses MySQL as the backend and stores sensitive data into the persistent disks.
@@ -103,7 +108,7 @@ This tutorial is intended for software developers and network administrators who
     ```
     Under `spec`, change `type: LoadBalancer` to `type: NodePort` (You could also change your NodePort number under `spec`/`ports`/`nodePort`).
 
-	> **Note:** Make sure you have `service "wordpress" edited` shown after editing the yaml file because that means the yaml file is successfully edited without any typo and connection errors.
+    > **Note:** Make sure you have `service "wordpress" edited` shown after editing the yaml file because that means the yaml file is successfully edited without any typo and connection errors.
 
     You can obtain your cluster's IP address using
 
