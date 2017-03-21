@@ -19,9 +19,6 @@ stages:
   jobs:
   - name: WordPress
     type: deployer
-    target:
-      organization: ${CF_ORGANIZATION}
-      space: ${CF_SPACE}
     script: |-
       #!/bin/bash
       bash bluemix.sh
