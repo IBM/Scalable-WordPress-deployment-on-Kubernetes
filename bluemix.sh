@@ -1,12 +1,13 @@
+#!/bin/bash
 set -x
 curl "http://public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/Bluemix_CLI_0.5.1_amd64.tar.gz" | tar zxvf -
-echo '' | sudo -S ./Bluemix_CLI/install_bluemix_cli
+./Bluemix_CLI/install_bluemix_cli
 bx plugin repo-add Bluemix https://plugins.ng.bluemix.net
 bx plugin install container-service -r Bluemix
 bx cs init
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 chmod +x kubectl
-echo '' | sudo -S mv kubectl /usr/local/bin/kubectl
+mv kubectl /usr/local/bin/kubectl
 bx cs cluster-create --name wordpress
 bx cs workers wordpress
 sleep 5m
