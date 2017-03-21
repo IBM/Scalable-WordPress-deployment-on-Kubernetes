@@ -19,6 +19,10 @@ stages:
   jobs:
   - name: WordPress
     type: deployer
+    target:
+      region_id: ibm:yp:us-south
+      organization: ${CF_ORGANIZATION}
+      space: ${CF_SPACE}
     script: |-
       #!/bin/bash
       bash bluemix.sh
