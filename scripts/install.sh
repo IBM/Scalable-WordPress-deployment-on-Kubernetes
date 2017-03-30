@@ -6,9 +6,9 @@ sudo apt-get update
 sudo apt-get install cf-cli
 cf --version
 curl "http://public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/Bluemix_CLI_0.5.1_amd64.tar.gz" | tar zxvf -
-sudo ./Bluemix_CLI/install_bluemix_cli
+echo "https://api.ng.bluemix.net" | sudo ./Bluemix_CLI/install_bluemix_cli
 set +x
-bx login -u $user -p $password
+echo "1" | bx login -u $user -p $password
 set -x
 bx plugin repo-add Bluemix https://plugins.ng.bluemix.net
 bx plugin install container-service -r Bluemix
@@ -16,7 +16,7 @@ bx cs init
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/kubectl
-bx cs cluster-rm wordpress
+echo "y" | bx cs cluster-rm wordpress
 bx cs cluster-create --name wordpress
 sleep 5m
 sleep 5m

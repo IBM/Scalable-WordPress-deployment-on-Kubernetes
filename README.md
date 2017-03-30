@@ -7,9 +7,7 @@ This project demonstrates how to deploy WordPress and MySQL on Kubernetes cluste
 
 WordPress represents a typical multi-tier app and each component will have its own container(s). The WordPress containers will be the frontend tier and the MySQL container will be the database/backend tier for WordPress.
 
-![alt text][logo]
-
-[logo]: https://github.com/IBM/wordpress-sample/blob/master/image/kube-wordpress.png
+![kube-wordpress](images/kube-wordpress.png)
 
 With IBM Bluemix Container Service, you can deploy and manage your own Kubernetes cluster in the cloud that lets you automate the deployment, operation, scaling, and monitoring of containerized apps over a cluster of independent compute hosts called worker nodes. 
 
@@ -42,10 +40,11 @@ This scenario provides instructions for the following tasks:
 1. [Getting the WordPress Example and Setup Secrets](#1-getting-the-wordpress-example-and-setup-secrets)
 2. [Create Services and Deployments](#2-create-services-and-deployments)
 3. [Accessing the External Link](#3-accessing-the-external-link)
+4. [Using WordPress](#4-using-wordpress)
 
 # 1. Getting the WordPress Example and Setup Secrets
 
-> *Quickstart option:* In this repository, run `bash quickstart.sh` and move on to [Accessing the External Link](#3-accessing-the-external-link).
+> *Quickstart option:* In this repository, run `bash scripts/quickstart.sh` and move on to [Accessing the External Link](#3-accessing-the-external-link).
 
 Get the "mysql-wordpress-pd" example from Kubernetes's Github, you can use the following commands.
 
@@ -124,7 +123,7 @@ Congratulation. Now you can use the link **http://[IP]:[port number]** to access
 
 You can check the status of your deployment on Kubernetes UI. Run 'kubectl proxy' and go to URL 'http://127.0.0.1:8001/ui' to check when the WordPress container becomes ready.
 
-![Kubernetes Status Page](image/kube_ui.png)
+![Kubernetes Status Page](images/kube_ui.png)
 
 > **Note:** It can take up to 5 minutes for the pods to be fully functioning.
     
@@ -151,8 +150,20 @@ As you can see, we now have 2 pods that are running the WordPress frontend.
 
 > **Note:** If you are a free tier user, we recommend you only scale up to 10 pods since free tier users have limited resources.
 
+# 4. Using WordPress
 
-## Troubleshooting
+Now that WordPress is running you can register as a new user and install WordPress.
+
+![wordpress home Page](images/wordpress.png)
+
+After installing WordPress, you can post new comments.
+
+![wordpress comment Page](images/wordpress_comment.png)
+
+
+
+
+# Troubleshooting
 
 If you accidentally created a password with newlines and you can not authorize your MySQL service, you can delete your current secret using
 
@@ -170,3 +181,7 @@ If you want to delete your persistent volume, you can run the following commands
 kubectl delete pvc -l app=wordpress
 kubectl delete pv local-pv-1 local-pv-2
 ```
+
+
+# License
+[Apache 2.0](LICENSE.txt)
