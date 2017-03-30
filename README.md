@@ -3,7 +3,7 @@
 
 # Scalable Wordpress deployment on Bluemix Container Service using Kubernetes
 
-This project demonstrates how to deploy WordPress and MySQL on Kubernetes cluster with the capability of IBM Bluemix Container Service, and using Kubernetes cluster. The WordPress uses MySQL as the backend and stores sensitive data into the persistent disks.
+This project demonstrates how to deploy WordPress and MySQL on Kubernetes cluster with the capability of IBM Bluemix Container Service. The WordPress uses MySQL as the backend and stores sensitive data into the persistent disks.
 
 WordPress represents a typical multi-tier app and each component will have its own container(s). The WordPress containers will be the frontend tier and the MySQL container will be the database/backend tier for WordPress.
 
