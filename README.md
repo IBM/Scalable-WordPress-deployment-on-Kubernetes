@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/IBM/wordpress-sample.svg?branch=master)](https://travis-ci.org/IBM/wordpress-sample)
+[![Build Status](https://travis-ci.org/IBM/kubernetes-container-service-wordpress-deployment.svg?branch=master)](https://travis-ci.org/IBM/kubernetes-container-service-wordpress-deployment)
 
 
 # Scalable Wordpress deployment on Bluemix Container Service using Kubernetes
@@ -13,6 +13,12 @@ WordPress represents a typical multi-tier app and each component will have its o
 
 With IBM Bluemix Container Service, you can deploy and manage your own Kubernetes cluster in the cloud that lets you automate the deployment, operation, scaling, and monitoring of containerized apps over a cluster of independent compute hosts called worker nodes. 
 
+
+## Included Components
+- Bluemix container service
+- Kubernetes
+- WordPress
+- MySQL
 
 ## Prerequisite
 
@@ -32,129 +38,118 @@ This scenario provides instructions for the following tasks:
 - Create and deploy the WordPress frontend with one or more pods.
 - Create and deploy the MySQL database.
 
+## Steps
+1. [Getting the WordPress Example and Setup Secrets](#1-getting-the-wordpress-example-and-setup-secrets)
+2. [Create Services and Deployments](#2-create-services-and-deployments)
+3. [Accessing the External Link](#3-accessing-the-external-link)
 
-## Audience
+# 1. Getting the WordPress Example and Setup Secrets
 
-This tutorial is intended for software developers and network administrators who have never deployed an application on Kubernetes cluster before.
+> *Quickstart option:* In this repository, run `bash quickstart.sh` and move on to [Accessing the External Link](#3-accessing-the-external-link).
 
+Get the "mysql-wordpress-pd" example from Kubernetes's Github, you can use the following commands.
 
-## Getting Started with WordPress on Kubernetes
+```bash
+git clone https://github.com/kubernetes/kubernetes.git
+cd kubernetes/examples/mysql-wordpress-pd/
+```
 
-> *Quickstart option:* In this repository, run `bash quickstart.sh` and move on to [step 9](#access-the-external-link).
-
-1. Get the "mysql-wordpress-pd" example from Kubernetes's Github, you can use the following commands.
-
-    ```bash
-    $ git clone https://github.com/kubernetes/kubernetes.git
-    $ cd kubernetes/examples/mysql-wordpress-pd/
-    ```
-
-2. Create a new file called `password.txt` in the same directory and put your desired MySQL password inside `password.txt` (Could be any string with ASCII characters).
+Create a new file called `password.txt` in the same directory and put your desired MySQL password inside `password.txt` (Could be any string with ASCII characters).
 
 
-3. We need to make sure `password.txt` does not have any trailing newline. Use the following command to remove possible newlines.
+We need to make sure `password.txt` does not have any trailing newline. Use the following command to remove possible newlines.
 
-    ```bash
-    $ tr -d '\n' <password.txt >.strippedpassword.txt && mv .strippedpassword.txt password.txt
-    ```
+```bash
+tr -d '\n' <password.txt >.strippedpassword.txt && mv .strippedpassword.txt password.txt
+```
 
-4. Install persistent volume on your cluster's local storage.
+# 2. Create Services and Deployments
 
-    ```bash
-    $ kubectl create -f local-volumes.yaml
-    persistentvolume "local-pv-1" created
-    persistentvolume "local-pv-2" created
-    ```
+Install persistent volume on your cluster's local storage. Then, create the secret and services for MySQL and WordPress.
 
-5. Create the secret for your MySQL password. We will use the password inside `password.txt`.
+```bash
+kubectl create -f local-volumes.yaml
+kubectl create secret generic mysql-pass --from-file=password.txt
+kubectl create -f mysql-deployment.yaml
+kubectl create -f wordpress-deployment.yaml
+```
 
-    ```bash
-    $ kubectl create secret generic mysql-pass --from-file=password.txt
-    secret "mysql-pass" created
-    ```
 
-6. Create the service for MySQL and claim its persistent volume.
+When all your pods are running, run the following commands to check your pod names.
 
-    ```bash
-    $ kubectl create -f mysql-deployment.yaml
-    service "wordpress-mysql" created
-    persistentvolumeclaim "mysql-pv-claim" created
-    deployment "wordpress-mysql" created
-    ```
+```bash
+kubectl get pods
+```
 
-7. Create the service for WordPress and claim its persistent volume.
+This should return a list of pods from the kubernetes cluster.
 
-    ```bash
-    $ kubectl create -f wordpress-deployment.yaml
-    service "wordpress" created
-    persistentvolumeclaim "wp-pv-claim" created
-    deployment "wordpress" created
-    ```
-
-8. When all your pods are running, run the following commands to check your pod names.
-
-    ```bash
-    $ kubectl get pods
-    NAME                               READY     STATUS    RESTARTS   AGE
-    wordpress-3772071710-58mmd         1/1       Running   0          17s
-    wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
-    ```
+```bash
+NAME                               READY     STATUS    RESTARTS   AGE
+wordpress-3772071710-58mmd         1/1       Running   0          17s
+wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
+```
     
-### Access the external link: 
+# 3. Accessing the External Link 
 
-9. If you do not have a SoftLayer account and you do not have a LoadBalancer endpoint, you can create a NodePort by running 
+If you do not have a paid account and you do not have a LoadBalancer endpoint, you can create a NodePort by running 
     
-    ```bash
-    $ kubectl edit services wordpress
-    service "wordpress" edited
-    ```
-    Under `spec`, change `type: LoadBalancer` to `type: NodePort` (You could also change your NodePort number under `spec`/`ports`/`nodePort`).
+```bash
+kubectl edit services wordpress
+```
 
-    > **Note:** Make sure you have `service "wordpress" edited` shown after editing the yaml file because that means the yaml file is successfully edited without any typo and connection errors.
+Under `spec`, change `type: LoadBalancer` to `type: NodePort` (You could also change your NodePort number under `spec`/`ports`/`nodePort`).
 
-    You can obtain your cluster's IP address using
+> **Note:** Make sure you have `service "wordpress" edited` shown after editing the yaml file because that means the yaml file is successfully edited without any typo or connection errors.
 
-    ```bash
-    $ kubectl get nodes
-    NAME             STATUS    AGE
-    169.47.220.142   Ready     23h
-    ```
+You can obtain your cluster's IP address using
 
-    You will also need to run the following command to get your NodePort number.
+```bash
+$ kubectl get nodes
+NAME             STATUS    AGE
+169.47.220.142   Ready     23h
+```
 
-    ```bash
-    $ kubectl get svc wordpress 
-    NAME        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
-    wordpress   10.10.10.57   <nodes>       80:32340/TCP   2m
-    ```
+You will also need to run the following command to get your NodePort number.
 
-    Congratulation. Now you can use the link **http://[IP]:[port number]** to access your WordPress site.
- 
-     > **Note:** It can take up to 5 minutes for the pods to be fully functioning.
+```bash
+$ kubectl get svc wordpress 
+NAME        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+wordpress   10.10.10.57   <nodes>       80:32340/TCP   2m
+```
+
+Congratulation. Now you can use the link **http://[IP]:[port number]** to access your WordPress site.
+
+
+> **Note:** For the above example, the link would be http://169.47.220.142:32340
+
+You can check the status of your deployment on Kubernetes UI. Run 'kubectl proxy' and go to URL 'http://127.0.0.1:8001/ui' to check when the WordPress container becomes ready.
+
+![Kubernetes Status Page](image/kube_ui.png)
+
+> **Note:** It can take up to 5 minutes for the pods to be fully functioning.
     
 
-10. (Optional) If you have more resources in your cluster, and you want to scale up your WordPress website, you can run the following commands to check your current deployments.
-    ```bash
-    $ kubectl get deployments
-    NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-    wordpress         1         1         1            1           23h
-    wordpress-mysql   1         1         1            1           23h
-    ```
- 
-     Now, you can run the following commands to scale up for WordPress frontend.
-    ```bash
-    $ kubectl scale deployments/wordpress --replicas=2
-    deployment "wordpress" scaled
-    $ kubectl get deployments
-    NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-    wordpress         2         2         2            2           23h
-    wordpress-mysql   1         1         1            1           23h
-    ```
-    As you can see, we now have 2 pods that run the WordPress frontend. 
-    
-    > **Note:** If you are a free tier user, we recommend you only scale up to 10 pods since free tier users have limited resources.
-    >
-    > **Note:** We do not recommend you to scale up MySQL unless you know how to separate the InnoDB data for each MySQL pod.
+
+**(Optional)** If you have more resources in your cluster, and you want to scale up your WordPress website, you can run the following commands to check your current deployments.
+```bash
+$ kubectl get deployments
+NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+wordpress         1         1         1            1           23h
+wordpress-mysql   1         1         1            1           23h
+```
+
+Now, you can run the following commands to scale up for WordPress frontend.
+```bash
+$ kubectl scale deployments/wordpress --replicas=2
+deployment "wordpress" scaled
+$ kubectl get deployments
+NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+wordpress         2         2         2            2           23h
+wordpress-mysql   1         1         1            1           23h
+```
+As you can see, we now have 2 pods that are running the WordPress frontend. 
+
+> **Note:** If you are a free tier user, we recommend you only scale up to 10 pods since free tier users have limited resources.
 
 
 ## Troubleshooting
@@ -162,27 +157,16 @@ This tutorial is intended for software developers and network administrators who
 If you accidentally created a password with newlines and you can not authorize your MySQL service, you can delete your current secret using
 
 ```bash
-$ kubectl delete secret mysql-pass
-secret "mysql-pass" deleted
+kubectl delete secret mysql-pass
 ```
 
 If you want to delete your services, you can run
 ```bash
-$ kubectl delete deployment,service -l app=wordpress
-deployment "wordpress" deleted
-deployment "wordpress-mysql" deleted
-service "wordpress" deleted
-service "wordpress-mysql" deleted
+kubectl delete deployment,service -l app=wordpress
 ```
 
 If you want to delete your persistent volume, you can run the following commands
 ```bash
-$ kubectl delete pvc -l app=wordpress
-persistentvolumeclaim "mysql-pv-claim" deleted
-persistentvolumeclaim "wp-pv-claim" deleted
-$ kubectl delete pv local-pv-1 local-pv-2
-persistentvolume "local-pv-1" deleted
-persistentvolume "local-pv-2" deleted
+kubectl delete pvc -l app=wordpress
+kubectl delete pv local-pv-1 local-pv-2
 ```
-
-If you have your proxy running, you can open your Kubernetes dashboard via `http://localhost:[port number]/ui`  (Default port is 8001)
