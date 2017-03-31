@@ -6,8 +6,7 @@ sudo apt-get update
 sudo apt-get install cf-cli
 cf --version
 curl "http://public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/Bluemix_CLI_0.5.1_amd64.tar.gz" | tar zxvf -
-sudo ./Bluemix_CLI/install_bluemix_cli 
-echo "https://api.ng.bluemix.net"
+sudo ./Bluemix_CLI/install_bluemix_cli | echo "https://api.ng.bluemix.net"
 set +x
 bx login -u $user -p $password | echo "1" 
 set -x
