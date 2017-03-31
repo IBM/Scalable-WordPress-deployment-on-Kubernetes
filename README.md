@@ -7,11 +7,10 @@ This project demonstrates how to deploy WordPress and MySQL on Kubernetes cluste
 
 WordPress represents a typical multi-tier app and each component will have its own container(s). The WordPress containers will be the frontend tier and the MySQL container will be the database/backend tier for WordPress.
 
+With IBM Bluemix Container Service, you can deploy and manage your own Kubernetes cluster in the cloud that lets you automate the deployment, operation, scaling, and monitoring of containerized apps over a cluster of independent compute hosts called worker nodes.
+
 ![kube-wordpress](images/kube-wordpress.png)
-
-With IBM Bluemix Container Service, you can deploy and manage your own Kubernetes cluster in the cloud that lets you automate the deployment, operation, scaling, and monitoring of containerized apps over a cluster of independent compute hosts called worker nodes. 
-
-
+ 
 ## Included Components
 - Bluemix container service
 - Kubernetes
