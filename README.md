@@ -183,4 +183,4 @@ kubectl delete pv local-pv-1 local-pv-2
 
 
 # License
-[Apache 2.0](LICENSE.txt)
+[Apache 2.0](LICENSE)
