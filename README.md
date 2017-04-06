@@ -56,7 +56,7 @@ tr -d '\n' <password.txt >.strippedpassword.txt && mv .strippedpassword.txt pass
 
 # 2. Create Services and Deployments
 
-> *Note:* If you want to use Bluemix Compose-MySql as your backend, please go to [Using Bluemix MySQL as backend](#2-1-using-bluemix-mysql-as-backend).
+> *Note:* If you want to use Bluemix Compose-MySql as your backend, please go to [Using Bluemix MySQL as backend](#21-using-bluemix-mysql-as-backend).
 
 Install persistent volume on your cluster's local storage. Then, create the secret and services for MySQL and WordPress.
 
