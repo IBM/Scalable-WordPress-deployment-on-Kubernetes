@@ -33,24 +33,17 @@ This scenario provides instructions for the following tasks:
 - Create local persistent volumes to define persistent disks.
 - Create a secret to protect sensitive data.
 - Create and deploy the WordPress frontend with one or more pods.
-- Create and deploy the MySQL database.
+- Create and deploy the MySQL database(using Bluemix MySQL as backend).
 
 ## Steps
-1. [Getting the WordPress Example and Setup Secrets](#1-getting-the-wordpress-example-and-setup-secrets)
+1. [Setup Secrets](#1-setup-secrets)
 2. [Create Services and Deployments](#2-create-services-and-deployments)
 3. [Accessing the External Link](#3-accessing-the-external-link)
 4. [Using WordPress](#4-using-wordpress)
 
-# 1. Getting the WordPress Example and Setup Secrets
+# 1. Setup Secrets
 
-> *Quickstart option:* In this repository, run `bash scripts/quickstart.sh` and move on to [Accessing the External Link](#3-accessing-the-external-link).
-
-Get the "mysql-wordpress-pd" example from Kubernetes's Github, you can use the following commands.
-
-```bash
-git clone https://github.com/kubernetes/kubernetes.git
-cd kubernetes/examples/mysql-wordpress-pd/
-```
+> *Quickstart option:* In this repository, run `bash scripts/quickstart.sh`.
 
 Create a new file called `password.txt` in the same directory and put your desired MySQL password inside `password.txt` (Could be any string with ASCII characters).
 
@@ -62,6 +55,8 @@ tr -d '\n' <password.txt >.strippedpassword.txt && mv .strippedpassword.txt pass
 ```
 
 # 2. Create Services and Deployments
+
+> *Note:* If you want to use Bluemix Compose-MySql as your backend, please go to [Using Bluemix MySQL as backend](#2-1-using-bluemix-mysql-as-backend).
 
 Install persistent volume on your cluster's local storage. Then, create the secret and services for MySQL and WordPress.
 
@@ -86,17 +81,61 @@ NAME                               READY     STATUS    RESTARTS   AGE
 wordpress-3772071710-58mmd         1/1       Running   0          17s
 wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
 ```
+
+# 2.1 Using Bluemix MySQL as backend
+
+Provision Compose for MySQL in Bluemix via https://console.ng.bluemix.net/catalog/services/compose-for-mysql
+
+Go to Service credentials and view your credentials. Your MySQL hostname, port, user, and password are under your credential url and it should look like this
+
+![mysql](images/mysql.png)
+
+Modify your `wordpress-deployment.yaml` file, change WORDPRESS_DB_HOST's value to your MySQL hostname and port(i.e. `value: <hostname>:<port>`), WORDPRESS_DB_USER's value to your MySQL user, and WORDPRESS_DB_PASSWORD's value to your MySQL password.
+
+And the environment variables should look like this
+
+```yaml
+    spec:
+      containers:
+      - image: wordpress:4.7.3-apache
+        name: wordpress
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: sl-us-dal-9-portal.7.dblayer.com:22412
+        - name: WORDPRESS_DB_USER
+          value: admin
+        - name: WORDPRESS_DB_PASSWORD
+          value: XMRXTOXTDWOOPXEE
+```
+
+After you modified the `wordpress-deployment.yaml`, run the following commands to deploy wordpress.
+
+```bash
+kubectl create -f local-volumes.yaml
+kubectl create -f wordpress-deployment.yaml
+```
+
+When all your pods are running, run the following commands to check your pod names.
+
+```bash
+kubectl get pods
+```
+
+This should return a list of pods from the kubernetes cluster.
+
+```bash
+NAME                               READY     STATUS    RESTARTS   AGE
+wordpress-3772071710-58mmd         1/1       Running   0          17s
+```
     
 # 3. Accessing the External Link 
 
-If you do not have a paid account and you do not have a LoadBalancer endpoint, you can create a NodePort by running 
-    
-```bash
-kubectl edit services wordpress
-```
-
-Under `spec`, change `type: LoadBalancer` to `type: NodePort` (You could also change your NodePort number under `spec`/`ports`/`nodePort`).
-
+>(Paid Account Only!!) If you have a paid account, you can create a LoadBalancer by running 
+>
+>`kubectl edit services wordpress`
+>
+> Under `spec`, change `type: NodePort` to `type: LoadBalancer`
+>
 > **Note:** Make sure you have `service "wordpress" edited` shown after editing the yaml file because that means the yaml file is successfully edited without any typo or connection errors.
 
 You can obtain your cluster's IP address using
@@ -170,15 +209,14 @@ If you accidentally created a password with newlines and you can not authorize y
 kubectl delete secret mysql-pass
 ```
 
-If you want to delete your services, you can run
+If you want to delete your services, deployments, and persistent volume claim, you can run
 ```bash
-kubectl delete deployment,service -l app=wordpress
+kubectl delete deployment,service,pvc -l app=wordpress
 ```
 
 If you want to delete your persistent volume, you can run the following commands
 ```bash
-kubectl delete pvc -l app=wordpress
-kubectl delete pv local-pv-1 local-pv-2
+kubectl delete pv local-volume-1 local-volume-2
 ```
 
 

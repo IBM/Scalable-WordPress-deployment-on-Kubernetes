@@ -1,7 +1,5 @@
 language: bash
 sudo: required
-before_install:
-- openssl aes-256-cbc -K $encrypted_debede673199_key -iv $encrypted_debede673199_iv -in wordpress-deployment2.yaml.enc -out wordpress-deployment2.yaml -d
 script:
 - bash scripts/install.sh
 group: stable
