@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/IBM/kubernetes-container-service-wordpress-deployment.svg?branch=master)](https://travis-ci.org/IBM/kubernetes-container-service-wordpress-deployment)
 
+[![Create Toolchain](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM/kubernetes-container-service-wordpress-deployment)
+
 
 # Scalable WordPress deployment on Bluemix Container Service using Kubernetes
 
@@ -79,7 +81,7 @@ This should return a list of pods from the kubernetes cluster.
 ```bash
 NAME                               READY     STATUS    RESTARTS   AGE
 wordpress-3772071710-58mmd         1/1       Running   0          17s
-wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
+wp-mysql-2569670970-bd07b          1/1       Running   0          1m
 ```
 
 # 2.1 Using Bluemix MySQL as backend
@@ -172,7 +174,7 @@ You can check the status of your deployment on Kubernetes UI. Run 'kubectl proxy
 $ kubectl get deployments
 NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 wordpress         1         1         1            1           23h
-wordpress-mysql   1         1         1            1           23h
+wp-mysql          1         1         1            1           23h
 ```
 
 Now, you can run the following commands to scale up for WordPress frontend.
@@ -182,7 +184,7 @@ deployment "wordpress" scaled
 $ kubectl get deployments
 NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 wordpress         2         2         2            2           23h
-wordpress-mysql   1         1         1            1           23h
+wp-mysql          1         1         1            1           23h
 ```
 As you can see, we now have 2 pods that are running the WordPress frontend. 
 
