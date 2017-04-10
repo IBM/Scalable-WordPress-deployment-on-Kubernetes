@@ -30,7 +30,7 @@ kubectl create -f mysql-deployment.yaml
 kubectl create -f wordpress-deployment.yaml
 kubectl scale deployments/wordpress --replicas=2
 
-PORT=$(kubectl get services | grep wordpress | sed 's/.*://g' | sed 's/\/.*//g')
+PORT=$(kubectl get service wordpress | grep wordpress | sed 's/.*://g' | sed 's/\/.*//g')
 
 echo ""
 echo "View the wordpress at http://$IP_ADDR:$PORT"

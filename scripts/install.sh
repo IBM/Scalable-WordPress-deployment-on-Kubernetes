@@ -5,7 +5,7 @@ echo "deb http://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/a
 sudo apt-get update
 sudo apt-get install cf-cli
 cf --version
-curl "http://public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/Bluemix_CLI_0.5.1_amd64.tar.gz" | tar zxvf -
+curl "http://public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/Bluemix_CLI_0.5.2_amd64.tar.gz" | tar zxvf -
 echo "https://api.ng.bluemix.net" | sudo ./Bluemix_CLI/install_bluemix_cli
 set +x
 echo "1" | bx login -a https://api.ng.bluemix.net -u $user -p $password 
