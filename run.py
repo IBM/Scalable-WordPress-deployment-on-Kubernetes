@@ -1,0 +1,2 @@
+import cf_deployment_tracker
+cf_deployment_tracker.track()

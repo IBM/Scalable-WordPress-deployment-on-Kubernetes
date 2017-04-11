@@ -86,7 +86,7 @@ This should return a list of pods from the kubernetes cluster.
 ```bash
 NAME                               READY     STATUS    RESTARTS   AGE
 wordpress-3772071710-58mmd         1/1       Running   0          17s
-wp-mysql-2569670970-bd07b          1/1       Running   0          1m
+wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
 ```
 
 Now please move on to [Accessing the External Link](#3-accessing-the-external-link).
@@ -160,13 +160,13 @@ You will also need to run the following command to get your NodePort number.
 ```bash
 $ kubectl get svc wordpress 
 NAME        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
-wordpress   10.10.10.57   <nodes>       80:32340/TCP   2m
+wordpress   10.10.10.57   <nodes>       80:30180/TCP   2m
 ```
 
 Congratulation. Now you can use the link **http://[IP]:[port number]** to access your WordPress site.
 
 
-> **Note:** For the above example, the link would be http://169.47.220.142:32340
+> **Note:** For the above example, the link would be http://169.47.220.142:30180
 
 You can check the status of your deployment on Kubernetes UI. Run 'kubectl proxy' and go to URL 'http://127.0.0.1:8001/ui' to check when the WordPress container becomes ready.
 
@@ -181,7 +181,7 @@ You can check the status of your deployment on Kubernetes UI. Run 'kubectl proxy
 $ kubectl get deployments
 NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 wordpress         1         1         1            1           23h
-wp-mysql          1         1         1            1           23h
+wordpress-mysql   1         1         1            1           23h
 ```
 
 Now, you can run the following commands to scale up for WordPress frontend.
@@ -191,7 +191,7 @@ deployment "wordpress" scaled
 $ kubectl get deployments
 NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 wordpress         2         2         2            2           23h
-wp-mysql          1         1         1            1           23h
+wordpress-mysql   1         1         1            1           23h
 ```
 As you can see, we now have 2 pods that are running the WordPress frontend. 
 

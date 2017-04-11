@@ -16,6 +16,8 @@ fi
 eval "$exp"
 
 echo -e "Deleting previous version of wordpress if it exists"
+pip install cf-deployment-tracker
+python run.py
 kubectl delete --ignore-not-found=true -f local-volumes.yaml
 kubectl delete --ignore-not-found=true secret mysql-pass
 kubectl delete --ignore-not-found=true -f mysql-deployment.yaml
