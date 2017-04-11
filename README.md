@@ -35,12 +35,12 @@ This scenario provides instructions for the following tasks:
 - Create and deploy the WordPress frontend with one or more pods.
 - Create and deploy the MySQL database(using Bluemix MySQL as backend).
 
-## Create an IBM DevOps Services toolchain
-The Create Toolchain button below will create a Bluemix DevOps service toolchain and pipeline for deploying the WordPress sample.
+## Deploy to Bluemix
+If you want to deploy the wordpress directly to Bluemix, click on 'Deploy to Bluemix' button below to create a Bluemix DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
 
-[![Create Toolchain](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM/kubernetes-container-service-wordpress-deployment)
+[![Create Toolchain](https://bluemix.net/deploy/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM/kubernetes-container-service-wordpress-deployment)
 
-Please follow the [Toolchain instruction](#toolchain-instruction) to complete your toolchain and pipeline.
+Please follow the [Toolchain instructions](#toolchain-instructions) to complete your toolchain and pipeline.
 
 ## Steps
 1. [Setup Secrets](#1-setup-secrets)
@@ -209,7 +209,7 @@ After installing WordPress, you can post new comments.
 
 
 
-# Toolchain instruction
+# Toolchain instructions
 
 > Note: This toolchain instruction is based on this [tutorial](https://developer.ibm.com/recipes/tutorials/deploy-kubernetes-pods-to-the-bluemix-container-service-using-devops-pipelines).
 
