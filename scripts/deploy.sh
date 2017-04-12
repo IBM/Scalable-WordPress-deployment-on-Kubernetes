@@ -18,8 +18,7 @@ eval "$exp"
 echo -e "Deleting previous version of wordpress if it exists"
 kubectl delete --ignore-not-found=true -f local-volumes.yaml
 kubectl delete --ignore-not-found=true secret mysql-pass
-kubectl delete --ignore-not-found=true -f mysql-deployment.yaml
-kubectl delete --ignore-not-found=true -f wordpress-deployment.yaml
+kubectl delete --ignore-not-found=true svc,pvc,deployment -l app=wordpress
 
 echo -e "Creating pods"
 echo 'password' > password.txt
