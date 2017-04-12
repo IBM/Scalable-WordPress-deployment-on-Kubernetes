@@ -21,7 +21,7 @@
             "type": "string"
         },
        "prod-app-name": {
-            "description": "The name of your Hello World app",
+            "description": "The name of your WordPress app",
             "type": "string"
         }
     },
