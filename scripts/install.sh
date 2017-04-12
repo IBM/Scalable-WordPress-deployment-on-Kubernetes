@@ -16,19 +16,15 @@ bx cs init
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/kubectl
+echo "y" | bx cs cluster-rm wordpress 
+bx cs cluster-create --name wordpress
+sleep 5m
+sleep 5m
+sleep 5m
 bx cs workers wordpress
 bx cs cluster-config wordpress
 $(bx cs cluster-config wordpress | grep -v "Downloading" | grep -v "OK" | grep -v "The")
 kubectl get secrets --namespace=default
-kubectl delete --ignore-not-found=true -f local-volumes.yaml
-kubectl delete --ignore-not-found=true secret mysql-pass
-kubectl delete --ignore-not-found=true svc,pvc,deployment -l app=wordpress
-
-kuber=$(kubectl get pods -l app=wordpress)
-if [ ${#kuber} -ne 0 ]; then
-	sleep 120s
-fi
-
 echo 'password' > password.txt
 tr -d '\n' <password.txt >.strippedpassword.txt && mv .strippedpassword.txt password.txt
 kubectl create -f local-volumes.yaml
