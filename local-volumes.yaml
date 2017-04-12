@@ -11,6 +11,7 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /tmp/data/lv-1
+  persistentVolumeReclaimPolicy: Recycle
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -25,3 +26,4 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /tmp/data/lv-2
+  persistentVolumeReclaimPolicy: Recycle
