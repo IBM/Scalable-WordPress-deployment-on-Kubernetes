@@ -1,9 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Sample Deploy Stage",
-    "localized-struct":{
-        "$ref": "deploy-localized-struct.json"
-    },
     "description": "sample toolchain",
     "longDescription": "The Delivery Pipeline automates continuous deployment.",
     "type": "object",
