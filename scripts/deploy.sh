@@ -27,6 +27,7 @@ kubectl create -f local-volumes.yaml
 kubectl create secret generic mysql-pass --from-file=password.txt
 kubectl create -f mysql-deployment.yaml
 kubectl create -f wordpress-deployment.yaml
+sleep 10s
 kubectl scale deployments/wordpress --replicas=2
 
 PORT=$(kubectl get service wordpress | grep wordpress | sed 's/.*://g' | sed 's/\/.*//g')
