@@ -16,9 +16,9 @@ fi
 eval "$exp"
 
 echo -e "Deleting previous version of wordpress if it exists"
-kubectl delete --ignore-not-found=true -f local-volumes.yaml
-kubectl delete --ignore-not-found=true secret mysql-pass
 kubectl delete --ignore-not-found=true svc,pvc,deployment -l app=wordpress
+kubectl delete --ignore-not-found=true secret mysql-pass
+kubectl delete --ignore-not-found=true -f local-volumes.yaml
 
 kuber=$(kubectl get pods -l app=wordpress)
 if [ ${#kuber} -ne 0 ]; then
