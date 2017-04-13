@@ -13,7 +13,7 @@ With IBM Bluemix Container Service, you can deploy and manage your own Kubernete
  
 ## Included Components
 - Bluemix container service
-- Kubernetes (1.5.3)
+- Kubernetes 
 - WordPress (Latest)
 - MySQL (5.6)
 
