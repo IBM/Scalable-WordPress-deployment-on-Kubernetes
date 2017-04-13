@@ -13,7 +13,7 @@ sample-repo:
   service_id: githubpublic
   parameters:
     repo_name: "{{name}}"
-    repo_url: https://github.com/IBM/kubernetes-container-service-wordpress-deployment
+    repo_url: https://github.com/IBM/kubernetes-container-service-scalable-wordpress-deployment
     type: fork
     has_issues: false
 
