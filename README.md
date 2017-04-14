@@ -237,7 +237,9 @@ After installing WordPress, you can post new comments.
     
     BLUEMIX_ACCOUNT – The GUID of the Bluemix account where you created the cluster. Retrieve it with `bx iam accounts`.
     
-    CLUSTER_NAME – Your cluster name. Retrieve it with `bx cs clusters`.  
+    CLUSTER_NAME – Your cluster name. Retrieve it with `bx cs clusters`. 
+    
+> Note: For federated id user, since you can't login with Bluemix user and password via Bluemix CLI, you need to obtain an Apikey for login via https://console.ng.bluemix.net/docs/containers/cs_troubleshoot.html#cs_federated_id. Once you have your APIkey, click **add property** under environment properties. Then add a new property called `API_KEY` and set it to your APIkey. 
    
 ![env](images/env-example.png)
 
@@ -267,7 +269,7 @@ kubectl delete deployment,service,pvc -l app=wordpress
 
 If you want to delete your persistent volume, you can run the following commands
 ```bash
-kubectl delete pv local-volume-1 local-volume-2
+kubectl delete -f local-volumes.yaml
 ```
 
 
