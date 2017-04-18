@@ -32,6 +32,8 @@ stages:
     type: secure
   - name: CLUSTER_NAME
     type: text
+  - name: API_KEY
+    type: secure
   jobs:
   - name: Deploy
     type: deployer
