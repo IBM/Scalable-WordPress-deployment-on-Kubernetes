@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/IBM/kubernetes-container-service-scalable-wordpress-deployment.svg?branch=master)](https://travis-ci.org/IBM/kubernetes-container-service-scalable-wordpress-deployment)
 
 
-# Scalable WordPress deployment on Kubernetes
+# Scalable WordPress deployment on Kubernetes Cluster
 
 This journey showcases the full power of Kubernetes clusters and shows how can we deploy the world's most popular website framework on top of world's most popular container orchestration platform. We provide a full roadmap for hosting WordPress on Kubernetes Cluster. Each component runs in a separate container or group of containers.
 
