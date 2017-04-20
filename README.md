@@ -1,13 +1,13 @@
 [![Build Status](https://travis-ci.org/IBM/kubernetes-container-service-scalable-wordpress-deployment.svg?branch=master)](https://travis-ci.org/IBM/kubernetes-container-service-scalable-wordpress-deployment)
 
 
-# Scalable WordPress deployment on Bluemix Container Service using Kubernetes
+# Scalable WordPress deployment on Kubernetes
 
-This project demonstrates how to deploy WordPress and MySQL on Kubernetes cluster with the capability of IBM Bluemix Container Service. The WordPress uses MySQL as the backend and stores sensitive data into the persistent disks.
+This journey showcases the full power of Kubernetes clusters and shows how can we deploy the world's most popular website framework on top of world's most popular container orchestration platform. We provide a full roadmap for hosting WordPress on Kubernetes Cluster. Each component runs in a separate container or group of containers.
 
-WordPress represents a typical multi-tier app and each component will have its own container(s). The WordPress containers will be the frontend tier and the MySQL container will be the database/backend tier for WordPress.
+WordPress represents a typical multi-tier app and each component will have its own container(s). The WordPress containers will be the frontend tier and the MySQL container will be the database/backend tier for WordPress. 
 
-With IBM Bluemix Container Service, you can deploy and manage your own Kubernetes cluster in the cloud that lets you automate the deployment, operation, scaling, and monitoring of containerized apps over a cluster of independent compute hosts called worker nodes.
+In addition to deployment on Kubernetes, we will also show how you can scale the front WordPress tier, as well as how you can use MySQL as a service from Bluemix to be used by WordPress frontend.
 
 ![kube-wordpress](images/kube-wordpress.png)
  
