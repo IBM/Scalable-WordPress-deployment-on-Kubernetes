@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/IBM/kubernetes-container-service-scalable-wordpress-deployment.svg?branch=master)](https://travis-ci.org/IBM/scalable-wordpress-deployment-on-kubernetes)
+[![Build Status](https://travis-ci.org/IBM/scalable-wordpress-deployment-on-kubernetes.svg?branch=master)](https://travis-ci.org/IBM/scalable-wordpress-deployment-on-kubernetes)
 
 
 # Scalable WordPress deployment on Kubernetes Cluster
