@@ -1,6 +1,11 @@
 #!/bin/bash
 BXUSER=$user BXPASS=$password BXACCOUNT=1 ./scripts/linux.sh
 
+bx cs workers wordpress
+bx cs cluster-config wordpress
+$(bx cs cluster-config wordpress | grep -v "Downloading" | grep -v "OK" | grep -v "The")
+kubectl get secrets --namespace=default
+
 kubectl delete --ignore-not-found=true svc,pvc,deployment -l app=wordpress
 kubectl delete --ignore-not-found=true -f local-volumes.yaml
 kubectl delete --ignore-not-found=true secret mysql-pass
