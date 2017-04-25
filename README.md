@@ -25,8 +25,6 @@ Create a Kubernetes cluster with IBM Bluemix Container Service.
 
 If you have not setup the Kubernetes cluster, please follow the [Creating a Kubernetes cluster](https://github.com/IBM/container-journey-template) tutorial.
 
-## References
-- This WordPress example is based on Kubernetes's open source example "mysql-wordpress-pd" at <https://github.com/kubernetes/kubernetes/tree/master/examples/mysql-wordpress-pd>
 
 ## Objectives
 
@@ -40,7 +38,7 @@ This scenario provides instructions for the following tasks:
 ## Deploy to Bluemix
 If you want to deploy the wordpress directly to Bluemix, click on 'Deploy to Bluemix' button below to create a Bluemix DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
 
-[![Create Toolchain](https://hub.jazz.net/deploy/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM/scalable-wordpress-deployment-on-kubernetes)
+[![Create Toolchain](https://github.com/IBM/container-journey-template/blob/master/images/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM/scalable-wordpress-deployment-on-kubernetes)
 
 Please follow the [Toolchain instructions](https://github.com/IBM/container-journey-template/blob/master/Toolchain_Instructions.md) to complete your toolchain and pipeline.
 
@@ -227,6 +225,10 @@ If you want to delete your persistent volume, you can run the following commands
 ```bash
 kubectl delete -f local-volumes.yaml
 ```
+
+# References
+- This WordPress example is based on Kubernetes's open source example [mysql-wordpress-pd](https://github.com/kubernetes/kubernetes/tree/master/examples/mysql-wordpress-pd) at https://github.com/kubernetes/kubernetes/tree/master/examples/mysql-wordpress-pd. 
+
 
 
 # License
