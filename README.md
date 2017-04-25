@@ -97,7 +97,7 @@ Now please move on to [Accessing the External Link](#3-accessing-the-external-li
 
 Provision Compose for MySQL in Bluemix via https://console.ng.bluemix.net/catalog/services/compose-for-mysql
 
-Go to Service credentials and view your credentials. Your MySQL hostname, port, user, and password are under your credential url and it should look like this
+Go to Service credentials and view your credentials. Your MySQL hostname, port, user, and password are under your credential uri and it should look like this
 
 ![mysql](images/mysql.png)
 
