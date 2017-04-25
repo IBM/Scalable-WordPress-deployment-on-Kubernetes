@@ -9,7 +9,7 @@ WordPress represents a typical multi-tier app and each component will have its o
 
 In addition to deployment on Kubernetes, we will also show how you can scale the front WordPress tier, as well as how you can use MySQL as a service from Bluemix to be used by WordPress frontend.
 
-![kube-wordpress](images/kube-wordpress.png)
+![kube-wordpress](images/kube-wordpress-code.png)
  
 ## Included Components
 - [Bluemix container service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
