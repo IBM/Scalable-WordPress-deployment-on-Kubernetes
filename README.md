@@ -11,6 +11,20 @@ In addition to deployment on Kubernetes, we will also show how you can scale the
 
 ![kube-wordpress](images/kube-wordpress-code.png)
  
+1. The user interacts with WordPress via the web interface.Each WordPress container will respond to its users via HTTP/HTTPS.
+
+2. When a user posts to any WordPress container, WordPress will typically post the changes to the MySQL database. The MySQL database stores the post data into persistent disks to maintain security. In addition to a MySQL container, you can also use the Compose MySQL service from Bluemix. After authentication and authorization are complete, WordPress user information such as password (encrypted with MD5) and email address are created and stored in MySQL. Website, blogs, tags, categories, and other data are also stored in MySQL.
+
+3. The user can also upload themes, plugins, images, and documents. Non-textual data such as PDFs,videos, and MP3s, can also be uploaded.
+
+4. Themes, plugins, PDFs, videos, MP3s, etc. are stored in a persistent volume attached to the WordPress pods.
+
+5. The user accesses the WordPress website or blog. The WordPress core (that is, the WordPress “brain”) calls the required PHP scripts, starting with index.php.
+
+6. WordPress reaches out to the MySQL database to retrieve the website, blogs, tags, categories, and so on.
+
+7. TheWordPress core then retrieves the themes, documents, images, etc. from the persistent volume, combines it with data retrieved from the database, and presents the page to the user.
+
 ## Included Components
 - [Bluemix container service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
 - [Kubernetes Clusters](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)
