@@ -19,8 +19,6 @@ In addition to deployment on Kubernetes, we will also show how you can scale the
 - [WordPress (Latest)](https://hub.docker.com/_/wordpress/)
 - [MySQL (5.6)](https://hub.docker.com/_/mysql/)
 
-![kube-wordpress](images/kube-wordpress.png)
- 
 ## Prerequisite
 
 Create a Kubernetes cluster with IBM Bluemix Container Service. 
