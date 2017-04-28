@@ -21,10 +21,9 @@ In addition to deployment on Kubernetes, we will also show how you can scale the
 
 ## Prerequisite
 
-Create a Kubernetes cluster with IBM Bluemix Container Service. 
+Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube) or IBM Bluemix Container Service(https://github.com/IBM/container-journey-template)
 
-If you have not setup the Kubernetes cluster, please follow the [Creating a Kubernetes cluster](https://github.com/IBM/container-journey-template) tutorial.
-
+The instructions here are primarily tested and maintained with [Kubernetes Cluster from Bluemix Container Service].(https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)
 
 ## Objectives
 
