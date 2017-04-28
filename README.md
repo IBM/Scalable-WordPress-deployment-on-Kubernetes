@@ -45,8 +45,8 @@ Please follow the [Toolchain instructions](https://github.com/IBM/container-jour
 ## Steps
 1. [Setup MySQL Secrets](#1-setup-mysql-secrets)
 2. [Create Services and Deployments for WordPress and MySQL](#2-create-services-and-deployments-for-wordpress-and-mysql)
-  -2.1 [Using MySQL in container](#21-using-mysql-in-container)
-  -2.2 [Using Bluemix MySQL](#22-using-bluemix-mysql-as-backend)
+  - 2.1 [Using MySQL in container](#21-using-mysql-in-container)
+  - 2.2 [Using Bluemix MySQL](#22-using-bluemix-mysql-as-backend)
 3. [Accessing the external WordPress link](#3-accessing-the-external-wordpress-link)
 4. [Using WordPress](#4-using-wordpress)
 
