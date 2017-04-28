@@ -12,12 +12,12 @@ In addition to deployment on Kubernetes, we will also show how you can scale the
 ![kube-wordpress](images/kube-wordpress-code.png)
  
 ## Included Components
-- [Bluemix container service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
-- [Kubernetes Clusters](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)
-- [Bluemix Compose for MySQL](https://console.ng.bluemix.net/catalog/services/compose-for-mysql)
-- [Bluemix DevOps Toolchain Service](https://console.ng.bluemix.net/catalog/services/continuous-delivery)
 - [WordPress (Latest)](https://hub.docker.com/_/wordpress/)
 - [MySQL (5.6)](https://hub.docker.com/_/mysql/)
+- [Kubernetes Clusters](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)
+- [Bluemix container service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
+- [Bluemix Compose for MySQL](https://console.ng.bluemix.net/catalog/services/compose-for-mysql)
+- [Bluemix DevOps Toolchain Service](https://console.ng.bluemix.net/catalog/services/continuous-delivery)
 
 ## Prerequisite
 
