@@ -45,8 +45,8 @@ Please follow the [Toolchain instructions](https://github.com/IBM/container-jour
 ## Steps
 1. [Setup My SQL Secrets](#1-setup-secrets)
 2. [Create Services and Deployments](#2-create-services-and-deployments)
-2.1 [Using MySQL in container](#2.1-Using-MySQL-Container)
-2.2 [Using Bluemix MySQL](#2.2-Using-Bluemix-MySQL-as-backend)
+    2.1. [Using MySQL in container](#2.1-Using-MySQL-Container)
+    2.2. [Using Bluemix MySQL](#2.2-Using-Bluemix-MySQL-as-backend)
 3. [Accessing the External Link](#3-accessing-the-external-link)
 4. [Using WordPress](#4-using-wordpress)
 
@@ -63,9 +63,9 @@ We need to make sure `password.txt` does not have any trailing newline. Use the 
 tr -d '\n' <password.txt >.strippedpassword.txt && mv .strippedpassword.txt password.txt
 ```
 
-# 2. Create Services and Deployments
+# 2. Create Services and deployments for WordPress and MySQL
 
-# 2.1 Using MySQL Container
+### 2.1 Using MySQL in container
 
 > *Note:* If you want to use Bluemix Compose-MySql as your backend, please go to [Using Bluemix MySQL as backend](#21-using-bluemix-mysql-as-backend).
 
@@ -95,7 +95,7 @@ wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
 
 Now please move on to [Accessing the External Link](#3-accessing-the-external-link).
 
-# 2.2 Using Bluemix MySQL as backend
+### 2.2 Using Bluemix MySQL as backend
 
 Provision Compose for MySQL in Bluemix via https://console.ng.bluemix.net/catalog/services/compose-for-mysql
 
