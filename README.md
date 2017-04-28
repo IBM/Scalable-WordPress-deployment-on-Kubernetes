@@ -45,8 +45,8 @@ Please follow the [Toolchain instructions](https://github.com/IBM/container-jour
 ## Steps
 1. [Setup My SQL Secrets](#1-setup-secrets)
 2. [Create Services and Deployments](#2-create-services-and-deployments)
-        [2.1] [Using MySQL Container](#2.1-Using-MySQL-Container)
-        [2.2] [Using Bluemix MySQL](#2.2-Using-Bluemix-MySQL-as-backend)
+   2.1 [Using MySQL Container](#2.1-Using-MySQL-Container)
+   2.2 [Using Bluemix MySQL](#2.2-Using-Bluemix-MySQL-as-backend)
 3. [Accessing the External Link](#3-accessing-the-external-link)
 4. [Using WordPress](#4-using-wordpress)
 
