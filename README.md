@@ -43,14 +43,14 @@ If you want to deploy the wordpress directly to Bluemix, click on 'Deploy to Blu
 Please follow the [Toolchain instructions](https://github.com/IBM/container-journey-template/blob/master/Toolchain_Instructions.md) to complete your toolchain and pipeline.
 
 ## Steps
-1. [Setup My SQL Secrets](#1-setup-secrets)
+1. [Setup MySQL Secrets](#1-setup-mysql-secrets)
 2. [Create Services and Deployments](#2-create-services-and-deployments)
-    2.1. [Using MySQL in container](#2.1-Using-MySQL-Container)
-    2.2. [Using Bluemix MySQL](#2.2-Using-Bluemix-MySQL-as-backend)
-3. [Accessing the External Link](#3-accessing-the-external-link)
+  - 2.1. [Using MySQL in container](#2.1-Using-MySQL-in-Container)
+  - 2.2. [Using Bluemix MySQL](#2.2-Using-Bluemix-MySQL-as-backend)
+3. [Accessing the external WordPress link](#3-accessing-the-external-link)
 4. [Using WordPress](#4-using-wordpress)
 
-# 1. Setup Secrets
+# 1. Setup MySQL Secrets
 
 > *Quickstart option:* In this repository, run `bash scripts/quickstart.sh`.
 
@@ -141,7 +141,7 @@ NAME                               READY     STATUS    RESTARTS   AGE
 wordpress-3772071710-58mmd         1/1       Running   0          17s
 ```
     
-# 3. Accessing the External Link 
+# 3. Accessing the external WordPress link 
 
 >(Paid Account Only!!) If you have a paid account, you can create a LoadBalancer by running 
 >
