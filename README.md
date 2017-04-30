@@ -30,7 +30,7 @@ This scenario provides instructions for the following tasks:
 - Create local persistent volumes to define persistent disks.
 - Create a secret to protect sensitive data.
 - Create and deploy the WordPress frontend with one or more pods.
-- Create and deploy the MySQL database(using Bluemix MySQL as backend).
+- Create and deploy the MySQL database(either in a container or using Bluemix MySQL as backend).
 
 ## Deploy to Bluemix
 If you want to deploy the wordpress directly to Bluemix, click on 'Deploy to Bluemix' button below to create a Bluemix DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
