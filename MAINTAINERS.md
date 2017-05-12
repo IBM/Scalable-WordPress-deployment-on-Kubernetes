@@ -13,7 +13,7 @@ The remainder of this document details how to merge pull requests to the reposit
 ## Merge approval
 
 The project maintainers use LGTM (Looks Good To Me) in comments on the code review to
-indicate acceptance. A change requires LGTMs from two of the members of the [ogs-dta-committers](https://github.com/orgs/IBM/teams/ogs-dta-committers) team. If the code is written by a member, the change only requires one more LGTM.
+indicate acceptance. A change requires LGTMs from two of the members of the [cloud-journey-admins](https://github.com/orgs/IBM/teams/cloud-journey-admins) team. If the code is written by a member, the change only requires one more LGTM.
 
 ## Reviewing Pull Requests
 
