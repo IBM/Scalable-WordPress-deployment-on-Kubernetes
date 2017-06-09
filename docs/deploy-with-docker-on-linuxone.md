@@ -1,5 +1,9 @@
 # Deploy with Docker on LinuxONE
 
+Open source software has expanded from a low-cost alternative to a platform for enterprise databases, clouds and next-generation apps. These workloads need higher levels of scalability, security and availability from the underlying hardware infrastructure.
+
+LinuxONE was built for open source so you can harness the agility of the open revolution on the industry’s most secure, scalable and high-performing Linux server. In this journey we will show how to run open source Cloud-Native workloads on LinuxONE
+
 ## Included Components
 
 - [LinuxONE](https://www-03.ibm.com/systems/linuxone/open-source/index.html)
@@ -14,7 +18,7 @@ Register at [LinuxONE Communinity Cloud](https://developer.ibm.com/linuxone/) fo
 We will be using a Ret Hat base image for this journey, so be sure to chose the
 'Request your trial' button on the left side of this page.
 
-## Scenario One: Use Docker images from Docker hub to run your workloads on LinuxONE
+## Steps
 
 [Docker Hub](https://hub.docker.com) makes it rather simple to get started with
 containers, as there are quite a few images ready to for your to use.  You can
