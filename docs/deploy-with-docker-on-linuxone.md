@@ -100,4 +100,9 @@ After all is installed, you can check the status of your containers
 ubuntu_mysql_1       /docker-entrypoint.sh mysq ...   Up      3306/tcp             
 ubuntu_wordpress_1   /entrypoint.sh apache2-for ...   Up      0.0.0.0:8080->80/tcp
 ```
-and if all is well, you can see your new blog at localhost:8080
+and checkout your new blog by using a webbrowser to access http://localhost:8080
+
+![after_deploy](images/wpinstall-language.png)
+
+You will see the default setup screen requesting your language.  You will need
+to specify a default username/password, and you will be up and running!
