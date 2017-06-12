@@ -102,7 +102,7 @@ ubuntu_wordpress_1   /entrypoint.sh apache2-for ...   Up      0.0.0.0:8080->80/t
 ```
 and checkout your new blog by using a webbrowser to access http://localhost:8080
 
-![after_deploy](images/wpinstall-language.png)
+![after_deploy](../images/wpinstall-language.png)
 
 You will see the default setup screen requesting your language.  You will need
 to specify a default username/password, and you will be up and running!
