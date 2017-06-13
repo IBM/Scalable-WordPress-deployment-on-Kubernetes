@@ -16,7 +16,8 @@ LinuxONE was built for open source so you can harness the agility of the open re
 
 Register at [LinuxONE Communinity Cloud](https://developer.ibm.com/linuxone/) for a trial account.
 We will be using a Ret Hat base image for this journey, so be sure to chose the
-'Request your trial' button on the left side of this page.
+red 'Request your trial' button on the lower left side of this page:
+![testdrive](../images/linuxone_testdrive.png)
 
 ## Steps
 
@@ -104,5 +105,6 @@ and checkout your new blog by using a webbrowser to access http://localhost:8080
 
 ![after_deploy](../images/wpinstall-language.png)
 
-You will see the default setup screen requesting your language.  You will need
-to specify a default username/password, and you will be up and running!
+You will see the default setup screen requesting your language.  The following
+screen will ask you to specify a default username/password for the WordPress
+installation, after which you will be up and running!
