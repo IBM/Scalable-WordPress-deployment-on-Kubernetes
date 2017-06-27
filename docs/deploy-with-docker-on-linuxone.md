@@ -97,8 +97,8 @@ After all is installed, you can check the status of your containers
 :~$ sudo docker-compose ps
        Name                     Command               State          Ports         
 ----------------------------------------------------------------------------------
-ubuntu_mysql_1       /docker-entrypoint.sh mysq ...   Up      3306/tcp             
-ubuntu_wordpress_1   /entrypoint.sh apache2-for ...   Up      0.0.0.0:8080->80/tcp
+linux1_mysql_1       /docker-entrypoint.sh mysq ...   Up      3306/tcp             
+linux1_wordpress_1   /entrypoint.sh apache2-for ...   Up      0.0.0.0:8080->80/tcp
 ```
 and checkout your new blog by using a webbrowser to access http://localhost:8080
 
