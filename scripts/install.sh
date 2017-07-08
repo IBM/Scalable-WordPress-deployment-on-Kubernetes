@@ -21,7 +21,7 @@ kubectl scale deployments/wordpress --replicas=2
 #Check Wordpress is running.
 export IP=$(bx cs workers $cluster | grep normal | awk '{ print $2 }')
 sleep 60s #wait for the pods to be ready
-HEALTH=$(curl -o /dev/null -s -w "%{http_code}\n" http://$IP:30180)
+HEALTH=$(curl -o /dev/null -s -w "%{http_code}\n" http://$IP:30180/wp-admin/install.php)
 if [ $HEALTH -eq 200 ]
 then
   echo "Everything looks good."
