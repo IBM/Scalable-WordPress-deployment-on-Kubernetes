@@ -16,15 +16,11 @@ kubectl create -f local-volumes.yaml
 kubectl create secret generic mysql-pass --from-file=password.txt
 kubectl create -f mysql-deployment.yaml
 kubectl create -f wordpress-deployment.yaml
-kubectl get pods
-kubectl get nodes
-kubectl get svc wordpress
-kubectl get deployments
 kubectl scale deployments/wordpress --replicas=2
 
 #Check Wordpress is running.
 export IP=$(bx cs workers $cluster | grep normal | awk '{ print $2 }')
-sleep 10s #wait for the pod to be ready
+sleep 60s #wait for the pods to be ready
 HEALTH=$(curl -o /dev/null -s -w "%{http_code}\n" http://$IP:30180)
 if [ $HEALTH -eq 200 ]
 then
