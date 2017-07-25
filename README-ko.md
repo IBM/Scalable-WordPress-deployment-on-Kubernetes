@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes.svg?branch=master)](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes)
 
+*Read this in other languages: [English](README.md).*
 
 # 쿠버네티스 클러스터에 스케일링 가능한 워드프레스 구축하기
 
@@ -21,11 +22,11 @@
 
 ## 전제조건
 
-로컬 테스트 환경에서는 [미니큐브(Minikube)](https://kubernetes.io/docs/getting-started-guides/minikube) 를, 클라우드 환경에서는  [I IBM Bluemix 컨테이너 서비스(Bluemix Container Service)](https://github.com/IBM/container-journey-template) 를 활용하여 쿠버네티스 클러스터를 생성하십시오. 여기 제공되는 코드는  [Bluemix 컨테이너 서비스의 쿠버네티스 클러스터(Kubernetes Cluster from Bluemix Container Service)](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) 환경에서 Travis로 정기적인 테스트합니다.
+로컬 테스트 환경에서는 [미니큐브(Minikube)](https://kubernetes.io/docs/getting-started-guides/minikube)를, 클라우드 환경에서는 [IBM Bluemix 컨테이너 서비스(Bluemix Container Service)](https://github.com/IBM/container-journey-template)를 활용하여 쿠버네티스 클러스터를 생성하십시오. 여기 제공되는 코드는  [Bluemix 컨테이너 서비스의 쿠버네티스 클러스터(Kubernetes Cluster from Bluemix Container Service)](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) 환경에서 Travis로 정기적인 테스트를 수행합니다.
 
 ## 목적
 
-본 시나리오는 다음 작업들의 수행을 위한 설명을 제공합니다.
+본 시나리오는 아래 작업의 진행을 위한 설명을 제공합니다.
 
 - 로컬 PersistentVolume(PV) 생성을 통한 영구적 디스크의 정의.
 - 비밀번호 생성을 통한 데이터의 보호.
@@ -33,7 +34,7 @@
 - MySQL 데이터베이스의 생성 및 배포(컨테이너 내에서의 생성 및 배포, 또는 Bluemix  MySQL을 백엔드로 사용한 생성 및 배포).
 
 ## Bluemix에 배포하기
-드프레스를 Bluemix에 직접 배포하려면, 아래의 ‘Deploy to Bluemix’ 버튼을 클릭하여 워드프레스 샘플 배포를 위한 Bluemix DevOps 서비스 툴체인과 파이프라인을 생성하십시오. 그렇지 않은 경우,  [단계](##steps) 로 이동하십시오.
+드프레스를 Bluemix에 직접 배포하려면, 아래의 ‘Deploy to Bluemix’ 버튼을 클릭하여 워드프레스 샘플 배포를 위한 Bluemix DevOps 서비스 툴체인과 파이프라인을 생성합니다. 그렇지 않은 경우,  [단계](##steps) 로 이동합니다.
 
 [![Create Toolchain](https://github.com/IBM/container-journey-template/blob/master/images/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/)
 
@@ -48,7 +49,7 @@
 
 # 1. MySQL 비밀키 설치
 
-> *빠른 시작을 위한 옵션:* Git 저장소 내의  `bash scripts/quickstart.sh`를 실행하십시오.
+> *빠른 시작을 위한 옵션:* Git 저장소 내의  `bash scripts/quickstart.sh`를 실행합니다.
 
 동일한 디렉토리에  `password.txt` 라는 이름의 신규 파일을 생성하고, 원하는 MySQL 암호를 `password.txt`에 기록하십시오(ASCII 형식의 문자열 가능).
 
@@ -65,7 +66,7 @@ tr -d '\n' <password.txt >.strippedpassword.txt && mv .strippedpassword.txt pass
 
 > *참고:* Bluemix Compose-MySql을 백엔드로 이용하려는 경우,  [Bluemix MySQL을 백엔드로 사용하기](#22-using-bluemix-mysql-as-backend)로 이동하십시오.
 
-클러스터의 로컬 스토리지에 PersistentVolume (PV)를 설치하십시오. 그런 다음, MySQL 비밀 번호를 설정하고, MySQL 및 워드프레스의 서비스를 생성하십시오.
+클러스터의 로컬 스토리지에 PersistentVolume(PV)를 설치하십시오. 그런 다음, MySQL 비밀 번호를 설정하고, MySQL 및 워드프레스의 서비스를 생성하십시오.
 
 ```bash
 kubectl create -f local-volumes.yaml
@@ -89,11 +90,11 @@ wordpress-3772071710-58mmd         1/1       Running   0          17s
 wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
 ```
 
-이제,  [외부 접속 링크 (external link) 이용하기](#3-accessing-the-external-link) 로 이동하십시오.
+이제,  [외부 접속 링크 (external link) 이용하기](#3-accessing-the-external-link)로 이동하십시오.
 
 ### 2.2 Bluemix MySQL을 백엔드로 사용하기
 
- https://console.ng.bluemix.net/catalog/services/compose-for-mysql 을 통해 Bluemix에 Compose for MySQL을 프로비저닝 하십시오.
+ https://console.ng.bluemix.net/catalog/services/compose-for-mysql을 통해 Bluemix에 Compose for MySQL을 프로비저닝 하십시오.
 
 서비스 신임정보로 이동하여 사용자 신임정보를 확인하십시오. 아래의 그림과 같이 사용자의 MySQL 호스트네임, 포트, 사용자, 암호 등이 사용자 신임정보 uri 밑에 있습니다.
 
