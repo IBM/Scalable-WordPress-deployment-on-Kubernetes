@@ -140,7 +140,7 @@ wordpress-3772071710-58mmd         1/1       Running   0          17s
 
 # 3. 외부 워드프레스 링크 이용하기
 
->(유료 계정 해당 사항!!) 유료 계정이 있는 경우, 다음 명령을 실행하여 로드밸런서(LoadBalancer)를 생성할 수 있습니다.
+>(유료 계정만 해당됨!!) 유료 계정이 있는 경우, 다음 명령을 실행하여 로드밸런서(LoadBalancer)를 생성할 수 있습니다.
 >
 >`kubectl edit services wordpress`
 >
