@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes.svg?branch=master)](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes)
 
-*다른 언어로 보기: [한국어](README-ko.md).*
+*Read this in other languages: [한국어](README-ko.md).*
 
 # Scalable WordPress deployment on Kubernetes Cluster
 
