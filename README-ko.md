@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes.svg?branch=master)](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes)
 
-*Read this in other languages: [English](README.md).*
+*다른 언어로 보기: [English](README.md).*
 
 # 쿠버네티스 클러스터에 스케일링 가능한 워드프레스 구축하기
 
