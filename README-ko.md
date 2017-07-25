@@ -34,18 +34,18 @@
 - MySQL 데이터베이스의 생성 및 배포(컨테이너 내에서의 생성 및 배포, 또는 Bluemix  MySQL을 백엔드로 사용한 생성 및 배포).
 
 ## Bluemix에 배포하기
-드프레스를 Bluemix에 직접 배포하려면, 아래의 ‘Deploy to Bluemix’ 버튼을 클릭하여 워드프레스 샘플 배포를 위한 Bluemix DevOps 서비스 툴체인과 파이프라인을 생성합니다. 그렇지 않은 경우,  [단계](##steps) 로 이동합니다.
+드프레스를 Bluemix에 직접 배포하려면, 아래의 ‘Deploy to Bluemix’ 버튼을 클릭하여 워드프레스 샘플 배포를 위한 Bluemix DevOps 서비스 툴체인과 파이프라인을 생성합니다. 그렇지 않은 경우,  [단계](##단계) 로 이동합니다.
 
 [![Create Toolchain](https://github.com/IBM/container-journey-template/blob/master/images/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/)
 
  [툴체인 가이드를](https://github.com/IBM/container-journey-template/blob/master/Toolchain_Instructions_new.md) 참고하여 툴체인과 파이프라인을 생성하십시오.
 ## 단계
-1. [MySQL 비밀키 설치](#1-setup-mysql-secrets)
-2. [워드프레스 및 MySQL의 서비스 및 배포 생성](#2-create-services-and-deployments-for-wordpress-and-mysql)
-  - 2.1 [컨테이너에서 MySQL 사용하기](#21-using-mysql-in-container)
-  - 2.2 [Bluemix MySQL 사용하기](#22-using-bluemix-mysql-as-backend)
-3. [외부 워드프레스 링크 이용하기](#3-accessing-the-external-wordpress-link)
-4. [워드프레스 사용하기](#4-using-wordpress)
+1. [MySQL 비밀키 설치](#1-mysql-비밀키-설치)
+2. [워드프레스 및 MySQL의 서비스 및 배포 생성](#2-워드프레스-및-mysql의-서비스-및-배포-생성)
+  - 2.1 [컨테이너에서 MySQL 사용하기](#21-컨테이너에서-mysql-사용하기)
+  - 2.2 [Bluemix MySQL 사용하기](#22-bluemix-mysql-사용하기)
+3. [외부 워드프레스 링크 이용하기](#3-외부-워드프레스-링크-이용하기)
+4. [워드프레스 사용하기](#4-워드프레스-사용하기)
 
 # 1. MySQL 비밀키 설치
 
@@ -90,7 +90,7 @@ wordpress-3772071710-58mmd         1/1       Running   0          17s
 wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
 ```
 
-이제,  [외부 접속 링크 (external link) 이용하기](#3-accessing-the-external-link)로 이동하십시오.
+이제,  [외부 링크 (external link) 이용하기](#3-외부-워드프레스-링크-이용하기)로 이동하십시오.
 
 ### 2.2 Bluemix MySQL을 백엔드로 사용하기
 
@@ -100,7 +100,7 @@ wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
 
 ![mysql](images/mysql.png)
 
-`wordpress-deployment.yaml` 파일을 수정합니다.WORDPRESS_DB_HOST 값을 사용자의 MySQL 호스트네임과 포트 `value: <hostname>:<port>`)로, WORDPRESS_DB_USER 값을 사용자의 MySQL 사용자로,  WORDPRESS_DB_PASSWORD 값을 사용자의 MySQL 암호로 변경하십시오.
+`wordpress-deployment.yaml` 파일을 수정합니다. WORDPRESS_DB_HOST 값을 사용자의 MySQL 호스트네임과 포트(`value: <hostname>:<port>`)로, WORDPRESS_DB_USER 값을 여러분의 MySQL 사용자로,  WORDPRESS_DB_PASSWORD 값을 사용자의 MySQL 암호로 변경하십시오.
 
 환경 변수는 다음과 같습니다.
 
