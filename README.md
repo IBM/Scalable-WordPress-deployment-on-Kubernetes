@@ -1,17 +1,17 @@
 [![Build Status](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes.svg?branch=master)](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes)
 
-*다른 언어로 보기: [한국어](README-ko.md).*
+*Read this in other languages: [한국어](README-ko.md).*
 
 # Scalable WordPress deployment on Kubernetes Cluster
 
 This journey showcases the full power of Kubernetes clusters and shows how can we deploy the world's most popular website framework on top of world's most popular container orchestration platform. We provide a full roadmap for hosting WordPress on Kubernetes Cluster. Each component runs in a separate container or group of containers.
 
-WordPress represents a typical multi-tier app and each component will have its own container(s). The WordPress containers will be the frontend tier and the MySQL container will be the database/backend tier for WordPress. 
+WordPress represents a typical multi-tier app and each component will have its own container(s). The WordPress containers will be the frontend tier and the MySQL container will be the database/backend tier for WordPress.
 
 In addition to deployment on Kubernetes, we will also show how you can scale the front WordPress tier, as well as how you can use MySQL as a service from Bluemix to be used by WordPress frontend.
 
 ![kube-wordpress](images/kube-wordpress-code.png)
- 
+
 ## Included Components
 - [WordPress (Latest)](https://hub.docker.com/_/wordpress/)
 - [MySQL (5.6)](https://hub.docker.com/_/mysql/)
@@ -138,10 +138,10 @@ This should return a list of pods from the kubernetes cluster.
 NAME                               READY     STATUS    RESTARTS   AGE
 wordpress-3772071710-58mmd         1/1       Running   0          17s
 ```
-    
-# 3. Accessing the external WordPress link 
 
->(Paid Account Only!!) If you have a paid account, you can create a LoadBalancer by running 
+# 3. Accessing the external WordPress link
+
+>(Paid Account Only!!) If you have a paid account, you can create a LoadBalancer by running
 >
 >`kubectl edit services wordpress`
 >
@@ -160,7 +160,7 @@ NAME             STATUS    AGE
 You will also need to run the following command to get your NodePort number.
 
 ```bash
-$ kubectl get svc wordpress 
+$ kubectl get svc wordpress
 NAME        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
 wordpress   10.10.10.57   <nodes>       80:30180/TCP   2m
 ```
@@ -175,7 +175,7 @@ You can check the status of your deployment on Kubernetes UI. Run 'kubectl proxy
 ![Kubernetes Status Page](images/kube_ui.png)
 
 > **Note:** It can take up to 5 minutes for the pods to be fully functioning.
-    
+
 
 
 **(Optional)** If you have more resources in your cluster, and you want to scale up your WordPress website, you can run the following commands to check your current deployments.
@@ -195,7 +195,7 @@ NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 wordpress         2         2         2            2           23h
 wordpress-mysql   1         1         1            1           23h
 ```
-As you can see, we now have 2 pods that are running the WordPress frontend. 
+As you can see, we now have 2 pods that are running the WordPress frontend.
 
 > **Note:** If you are a free tier user, we recommend you only scale up to 10 pods since free tier users have limited resources.
 
@@ -229,7 +229,7 @@ kubectl delete -f local-volumes.yaml
 ```
 
 # References
-- This WordPress example is based on Kubernetes's open source example [mysql-wordpress-pd](https://github.com/kubernetes/kubernetes/tree/master/examples/mysql-wordpress-pd) at https://github.com/kubernetes/kubernetes/tree/master/examples/mysql-wordpress-pd. 
+- This WordPress example is based on Kubernetes's open source example [mysql-wordpress-pd](https://github.com/kubernetes/kubernetes/tree/master/examples/mysql-wordpress-pd) at https://github.com/kubernetes/kubernetes/tree/master/examples/mysql-wordpress-pd.
 
 
 
