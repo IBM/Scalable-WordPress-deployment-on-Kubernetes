@@ -141,7 +141,7 @@ wordpress-3772071710-58mmd         1/1       Running   0          17s
 
 # 3. Accessing the external WordPress link
 
->(Paid Account Only!!) If you have a paid account, you can create a LoadBalancer by running
+> If you have a paid cluster, you can use LoadBalancer instead of NodePort by running
 >
 >`kubectl edit services wordpress`
 >
@@ -152,9 +152,10 @@ wordpress-3772071710-58mmd         1/1       Running   0          17s
 You can obtain your cluster's IP address using
 
 ```bash
-$ kubectl get nodes
-NAME             STATUS    AGE
-169.47.220.142   Ready     23h
+$ bx cs workers <your_cluster_name>
+OK
+ID                                                 Public IP        Private IP     Machine Type   State    Status   
+kube-hou02-pa817264f1244245d38c4de72fffd527ca-w1   169.47.220.142   10.10.10.57    free           normal   Ready 
 ```
 
 You will also need to run the following command to get your NodePort number.
@@ -170,7 +171,7 @@ Congratulation. Now you can use the link **http://[IP]:[port number]** to access
 
 > **Note:** For the above example, the link would be http://169.47.220.142:30180
 
-You can check the status of your deployment on Kubernetes UI. Run 'kubectl proxy' and go to URL 'http://127.0.0.1:8001/ui' to check when the WordPress container becomes ready.
+You can check the status of your deployment on Kubernetes UI. Run `kubectl proxy` and go to URL 'http://127.0.0.1:8001/ui' to check when the WordPress container becomes ready.
 
 ![Kubernetes Status Page](images/kube_ui.png)
 
