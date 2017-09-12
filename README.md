@@ -79,7 +79,7 @@ kubectl create -f wordpress-deployment.yaml
 ```
 
 
-When all your pods are running, run the following commands to check your pod names.
+When all your pods are running, run the following commands to check your pod names. Keep in mind that it may take a few moments for your PersistentVolumes to be dynamically created. 
 
 ```bash
 kubectl get pods
@@ -127,7 +127,7 @@ After you modified the `wordpress-deployment.yaml`, run the following commands t
 kubectl create -f wordpress-deployment.yaml
 ```
 
-When all your pods are running, run the following commands to check your pod names.
+When all your pods are running, run the following commands to check your pod names. Keep in mind that it may take a few moments for your PersistentVolumes to be dynamically created. 
 
 ```bash
 kubectl get pods
@@ -223,6 +223,12 @@ kubectl delete secret mysql-pass
 If you want to delete your services, deployments, and persistent volume claim, you can run
 ```bash
 kubectl delete deployment,service,pvc -l app=wordpress
+```
+
+If wordpress is taking a long time, you can debug it by inspecting the logs
+```bash
+kubectl get pods # Get the name of the wordpress pod
+kubectl logs [wordpress pod name]
 ```
 
 # References
