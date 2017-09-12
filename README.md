@@ -28,10 +28,10 @@ Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/ge
 
 This scenario provides instructions for the following tasks:
 
-- Create local persistent volumes to define persistent disks.
 - Create a secret to protect sensitive data.
-- Create and deploy the WordPress frontend with one or more pods.
-- Create and deploy the MySQL database(either in a container or using Bluemix MySQL as backend).
+- Create and deploy the WordPress frontend with one or more pods and with persistent storage.
+- Create and deploy the MySQL database(either in a container or using Bluemix MySQL as backend) with external persistent storage.
+
 
 ## Deploy to Bluemix
 If you want to deploy the wordpress directly to Bluemix, click on 'Deploy to Bluemix' button below to create a Bluemix DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
@@ -63,14 +63,16 @@ tr -d '\n' <password.txt >.strippedpassword.txt && mv .strippedpassword.txt pass
 
 # 2. Create Services and deployments for WordPress and MySQL
 
+#### Persistent Volumes
+The deployment files for the MySQL and Wordpress apps define "PersistentVolumeClaim" objects to request storage space in the cluster. For both Minikube and IBM Bluemix Container Service, PersistentVolumes are generated dynamically at the time these PersistentVolumeClaim objects are created. If you are hosting a Kubernetes cluster via another mechanism (such as on bare metal or VMs), you may need to statically create the PersistentVolume objects yourself. For more information, check the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
+
 ### 2.1 Using MySQL in container
 
 > *Note:* If you want to use Bluemix Compose-MySql as your backend, please go to [Using Bluemix MySQL as backend](#22-using-bluemix-mysql-as-backend).
 
-Install persistent volume on your cluster's local storage. Then, create the secret and services for MySQL and WordPress.
+Create the secret and services for MySQL and WordPress.
 
 ```bash
-kubectl create -f local-volumes.yaml
 kubectl create secret generic mysql-pass --from-file=password.txt
 kubectl create -f mysql-deployment.yaml
 kubectl create -f wordpress-deployment.yaml
@@ -122,7 +124,6 @@ And the environment variables should look like this
 After you modified the `wordpress-deployment.yaml`, run the following commands to deploy wordpress.
 
 ```bash
-kubectl create -f local-volumes.yaml
 kubectl create -f wordpress-deployment.yaml
 ```
 
@@ -222,11 +223,6 @@ kubectl delete secret mysql-pass
 If you want to delete your services, deployments, and persistent volume claim, you can run
 ```bash
 kubectl delete deployment,service,pvc -l app=wordpress
-```
-
-If you want to delete your persistent volume, you can run the following commands
-```bash
-kubectl delete -f local-volumes.yaml
 ```
 
 # References
