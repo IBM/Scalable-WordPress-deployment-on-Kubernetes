@@ -42,11 +42,12 @@ Please follow the [Toolchain instructions](https://github.com/IBM/container-jour
 
 ## Steps
 1. [Setup MySQL Secrets](#1-setup-mysql-secrets)
-2. [Create Services and Deployments for WordPress and MySQL](#2-create-services-and-deployments-for-wordpress-and-mysql)
-  - 2.1 [Using MySQL in container](#21-using-mysql-in-container)
-  - 2.2 [Using Bluemix MySQL](#22-using-bluemix-mysql-as-backend)
-3. [Accessing the external WordPress link](#3-accessing-the-external-wordpress-link)
-4. [Using WordPress](#4-using-wordpress)
+2. [Create local persistent volumes](#2-create-local-persistent-volumes)
+3. [Create Services and Deployments for WordPress and MySQL](#3-create-services-and-deployments-for-wordpress-and-mysql)
+  - 3.1 [Using MySQL in container](#31-using-mysql-in-container)
+  - 3.2 [Using Bluemix MySQL](#32-using-bluemix-mysql-as-backend)
+4. [Accessing the external WordPress link](#4-accessing-the-external-wordpress-link)
+5. [Using WordPress](#5-using-wordpress)
 
 # 1. Setup MySQL Secrets
 
@@ -61,16 +62,26 @@ We need to make sure `password.txt` does not have any trailing newline. Use the 
 tr -d '\n' <password.txt >.strippedpassword.txt && mv .strippedpassword.txt password.txt
 ```
 
-# 2. Create Services and deployments for WordPress and MySQL
+# 2. Create Local Persistent Volumes
+To save your data beyond the lifecycle of a Kubernetes pod, you will want to create persistent volumes for your MySQL and Wordpress applications to attach to.
 
-### 2.1 Using MySQL in container
+#### For "lite" IBM Bluemix Container Service
+Create the local persistent volumes manually by running
+```bash
+kubectl create -f local-volumes.yaml
+```
+#### For paid IBM Bluemix Container Service OR Minikube
+Persistent volumes are created dynamically for you when the MySQL and Wordpress applications are deployed. No action is needed.
 
-> *Note:* If you want to use Bluemix Compose-MySql as your backend, please go to [Using Bluemix MySQL as backend](#22-using-bluemix-mysql-as-backend).
+# 3. Create Services and deployments for WordPress and MySQL
+
+### 3.1 Using MySQL in container
+
+> *Note:* If you want to use Bluemix Compose-MySql as your backend, please go to [Using Bluemix MySQL as backend](#32-using-bluemix-mysql-as-backend).
 
 Install persistent volume on your cluster's local storage. Then, create the secret and services for MySQL and WordPress.
 
 ```bash
-kubectl create -f local-volumes.yaml
 kubectl create secret generic mysql-pass --from-file=password.txt
 kubectl create -f mysql-deployment.yaml
 kubectl create -f wordpress-deployment.yaml
@@ -91,9 +102,9 @@ wordpress-3772071710-58mmd         1/1       Running   0          17s
 wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
 ```
 
-Now please move on to [Accessing the External Link](#3-accessing-the-external-link).
+Now please move on to [Accessing the External Link](#4-accessing-the-external-wordpress-link).
 
-### 2.2 Using Bluemix MySQL as backend
+### 3.2 Using Bluemix MySQL as backend
 
 Provision Compose for MySQL in Bluemix via https://console.ng.bluemix.net/catalog/services/compose-for-mysql
 
@@ -122,7 +133,6 @@ And the environment variables should look like this
 After you modified the `wordpress-deployment.yaml`, run the following commands to deploy wordpress.
 
 ```bash
-kubectl create -f local-volumes.yaml
 kubectl create -f wordpress-deployment.yaml
 ```
 
@@ -139,7 +149,7 @@ NAME                               READY     STATUS    RESTARTS   AGE
 wordpress-3772071710-58mmd         1/1       Running   0          17s
 ```
 
-# 3. Accessing the external WordPress link
+# 4. Accessing the external WordPress link
 
 > If you have a paid cluster, you can use LoadBalancer instead of NodePort by running
 >
@@ -200,7 +210,7 @@ As you can see, we now have 2 pods that are running the WordPress frontend.
 
 > **Note:** If you are a free tier user, we recommend you only scale up to 10 pods since free tier users have limited resources.
 
-# 4. Using WordPress
+# 5. Using WordPress
 
 Now that WordPress is running you can register as a new user and install WordPress.
 
@@ -228,6 +238,13 @@ If you want to delete your persistent volume, you can run the following commands
 ```bash
 kubectl delete -f local-volumes.yaml
 ```
+
+If wordpress is taking a long time, you can debug it by inspecting the logs
+```bash
+kubectl get pods # Get the name of the wordpress pod
+kubectl logs [wordpress pod name]
+```
+
 
 # References
 - This WordPress example is based on Kubernetes's open source example [mysql-wordpress-pd](https://github.com/kubernetes/kubernetes/tree/master/examples/mysql-wordpress-pd) at https://github.com/kubernetes/kubernetes/tree/master/examples/mysql-wordpress-pd.
