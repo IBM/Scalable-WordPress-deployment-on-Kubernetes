@@ -102,7 +102,7 @@ wordpress-3772071710-58mmd         1/1       Running   0          17s
 wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
 ```
 
-Now please move on to [Accessing the External Link](#4-accessing-the-external-link).
+Now please move on to [Accessing the External Link](#4-accessing-the-external-wordpress-link).
 
 ### 3.2 Using Bluemix MySQL as backend
 
