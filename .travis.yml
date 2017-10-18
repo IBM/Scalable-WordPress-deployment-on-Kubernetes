@@ -1,8 +1,8 @@
+---
 language: bash
 sudo: required
 script:
-- bash scripts/install.sh
+  - bash scripts/install.sh
 group: stable
 dist: trusty
-sudo: required
 os: linux
