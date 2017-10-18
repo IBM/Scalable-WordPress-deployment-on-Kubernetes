@@ -1,15 +1,15 @@
 #!/bin/bash
 
 echo "Create WordPress"
-IP_ADDR=$(bx cs workers $CLUSTER_NAME | grep Ready | awk '{ print $2 }')
-if [ -z $IP_ADDR ]; then
+IP_ADDR=$(bx cs workers "$CLUSTER_NAME" | grep Ready | awk '{ print $2 }')
+if [ -z "$IP_ADDR" ]; then
   echo "$CLUSTER_NAME not created or workers not ready"
   exit 1
 fi
 
 echo -e "Configuring vars"
-exp=$(bx cs cluster-config $CLUSTER_NAME | grep export)
-if [ $? -ne 0 ]; then
+exp=$(bx cs cluster-config "$CLUSTER_NAME" | grep export)
+if ! bx cs cluster-config "$CLUSTER_NAME" | grep export; then
   echo "Cluster $CLUSTER_NAME not created or not ready."
   exit 1
 fi
