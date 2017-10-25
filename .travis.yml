@@ -1,8 +1,34 @@
 ---
-language: bash
+language: python
+python: 2.7
 sudo: required
-script:
-  - bash scripts/install.sh
 group: stable
 dist: trusty
 os: linux
+
+services:
+  - docker
+
+addons:
+  apt:
+    sources:
+      - debian-sid
+    packages:
+      - shellcheck
+
+env:
+  - TEST_RUN="./tests/test-kubeadm-dind-cluster.sh"
+  - TEST_RUN="./tests/test-kubernetes.sh"
+
+before_install:
+  - pip install yamllint
+
+install:
+  - "./scripts/install_bx.sh"
+  - "./scripts/bx_auth.sh"
+
+before_script:
+  - "./tests/test-shellcheck.sh"
+  - "./tests/test-yamllint.sh"
+
+script: "$TEST_RUN"
