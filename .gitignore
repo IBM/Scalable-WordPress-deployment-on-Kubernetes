@@ -23,3 +23,7 @@ tags
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Ignore CI files
+dind-cluster-v1.7.sh*
+password.txt
