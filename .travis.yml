@@ -1,10 +1,8 @@
 ---
 language: python
 python: 2.7
+cache: pip
 sudo: required
-group: stable
-dist: trusty
-os: linux
 
 services:
   - docker
@@ -16,15 +14,18 @@ addons:
     packages:
       - shellcheck
 
+matrix:
+  fast_finish: true
+
 env:
   - TEST_RUN="./tests/test-kubeadm-dind-cluster.sh"
   - TEST_RUN="./tests/test-kubernetes.sh"
 
 before_install:
-  - pip install yamllint
+  - pip install -U -r test-requirements.txt
 
 install:
-  - "./scripts/install_bx.sh"
+  - "./scripts/install.sh"
   - "./scripts/bx_auth.sh"
 
 before_script:
