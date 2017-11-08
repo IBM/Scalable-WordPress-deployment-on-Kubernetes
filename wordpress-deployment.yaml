@@ -69,20 +69,21 @@ spec:
 ---
 apiVersion: batch/v1
 kind: Job
-metadata: {name: Scalable-WordPress-deployment-on-Kubernetes-metrics}
+metadata: {name: scalable-wordpress-deployment-on-kubernetes-metrics}
 spec:
   template:
-    metadata: {name: Scalable-WordPress-deployment-on-Kubernetes-metrics}
+    metadata: {name: scalable-wordpress-deployment-on-kubernetes-metrics}
     spec:
       containers:
         - env:
-            - {name: config, value: '{"repository_id": "Scalable-Wordpress-
-                  deployment-on-Kubernetes", "target_runtimes": ["Kubernetes
-                  Cluster"], "event_id": "web", "event_organizer": "dev-
-                  journeys"}'}
+            - {name: config, value: '{"event_id": "web",
+                "repository_id": "Scalable-WordPress-deployment-on-Kubernetes",
+                "target_services": ["Compose for MySQL"],
+                "target_runtimes": ["Kubernetes Cluster"],
+                "event_organizer": "dev-journeys"}'}
+            - {name: language, value: ''}
           image: journeycode/kubernetes:latest
-          imagePullPolicy: Always
-          name: Scalable-WordPress-deployment-on-Kubernetes-metrics
+          name: scalable-wordpress-deployment-on-kubernetes-metrics
           resources:
             limits: {cpu: 100m}
-          restartPolicy: Never
+      restartPolicy: Never
