@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes.svg?branch=master)](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes)
+![Bluemix Deployments](https://metrics-tracker.mybluemix.net/stats/8201eec1bc017860952416f1cc5666ce/badge.svg)
 
 *Read this in other languages: [한국어](README-ko.md).*
 
@@ -36,7 +37,7 @@ This scenario provides instructions for the following tasks:
 ## Deploy to Bluemix
 If you want to deploy the wordpress directly to Bluemix, click on 'Deploy to Bluemix' button below to create a Bluemix DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
 
-[![Create Toolchain](https://github.com/IBM/container-journey-template/blob/master/images/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/)
+[![Create Toolchain](https://metrics-tracker.mybluemix.net/stats/8201eec1bc017860952416f1cc5666ce/button.svg)](https://console.ng.bluemix.net/devops/setup/deploy/)
 
 Please follow the [Toolchain instructions](https://github.com/IBM/container-journey-template/blob/master/Toolchain_Instructions_new.md) to complete your toolchain and pipeline.
 
