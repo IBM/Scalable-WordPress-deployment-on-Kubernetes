@@ -66,3 +66,23 @@ spec:
         - name: wordpress-local-storage
           persistentVolumeClaim:
             claimName: wp-lv-claim
+---
+apiVersion: batch/v1
+kind: Job
+metadata: {name: Scalable-WordPress-deployment-on-Kubernetes-metrics}
+spec:
+  template:
+    metadata: {name: Scalable-WordPress-deployment-on-Kubernetes-metrics}
+    spec:
+      containers:
+        - env:
+            - {name: config, value: '{"repository_id": "Scalable-Wordpress-
+                  deployment-on-Kubernetes", "target_runtimes": ["Kubernetes
+                  Cluster"], "event_id": "web", "event_organizer": "dev-
+                  journeys"}'}
+          image: journeycode/kubernetes:latest
+          imagePullPolicy: Always
+          name: Scalable-WordPress-deployment-on-Kubernetes-metrics
+          resources:
+            limits: {cpu: 100m}
+          restartPolicy: Never
