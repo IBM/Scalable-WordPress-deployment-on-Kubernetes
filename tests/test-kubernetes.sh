@@ -8,7 +8,7 @@
 # shellcheck disable=SC1090
 source "$(dirname "$0")"/../scripts/resources.sh
 
-kubeclt_clean() {
+kubectl_clean() {
     echo "Cleaning cluster"
     kubectl delete --ignore-not-found=true svc,pvc,deployment -l app=wordpress
     kubectl delete --ignore-not-found=true secret mysql-pass
@@ -29,11 +29,11 @@ kubectl_config() {
 }
 
 kubectl_deploy() {
-    kubeclt_clean
+    kubectl_clean
 
     echo "Modifying yaml files to ignore storage-class"
-    sed -i '$!N;/PersistentVolumeClaim.*\n.*metadata/a \ \ annotations: \n\ \ \ \ volume.beta.kubernetes.io/storage-class: ""' ../mysql-deployment.yaml
-    sed -i '$!N;/PersistentVolumeClaim.*\n.*metadata/a \ \ annotations: \n\ \ \ \ volume.beta.kubernetes.io/storage-class: ""' ../wordpress-deployment.yaml
+    sed -i '$!N;/PersistentVolumeClaim.*\n.*metadata/a \ \ annotations: \n\ \ \ \ volume.beta.kubernetes.io/storage-class: ""' mysql-deployment.yaml
+    sed -i '$!N;/PersistentVolumeClaim.*\n.*metadata/a \ \ annotations: \n\ \ \ \ volume.beta.kubernetes.io/storage-class: ""' wordpress-deployment.yaml
 
     echo "Running scripts/quickstart.sh"
     "$(dirname "$0")"/../scripts/quickstart.sh
@@ -50,13 +50,14 @@ kubectl_deploy() {
         ((i++))
     done
     echo "All pods are running"
+    sleep 30
 }
 
 verify_deploy() {
     echo "Verifying deployment was successful"
     IPS=$(bx cs workers "$CLUSTER_NAME" | awk '{ print $2 }' | grep '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}')
     for IP in $IPS; do
-        if ! curl -sS http://"$IP":8080/version; then
+        if ! curl -sS http://"$IP":30180/version; then
             test_failed "$0"
         fi
     done
@@ -73,6 +74,7 @@ main(){
         test_failed "$0"
     else
         test_passed "$0"
+        kubectl_clean
     fi
 }
 
