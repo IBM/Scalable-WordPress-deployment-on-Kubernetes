@@ -31,6 +31,10 @@ kubectl_config() {
 kubectl_deploy() {
     kubeclt_clean
 
+    echo "Modifying yaml files to ignore storage-class"
+    sed -i '$!N;/PersistentVolumeClaim.*\n.*metadata/a \ \ annotations: \n\ \ \ \ volume.beta.kubernetes.io/storage-class: ""' ../mysql-deployment.yaml
+    sed -i '$!N;/PersistentVolumeClaim.*\n.*metadata/a \ \ annotations: \n\ \ \ \ volume.beta.kubernetes.io/storage-class: ""' ../wordpress-deployment.yaml
+
     echo "Running scripts/quickstart.sh"
     "$(dirname "$0")"/../scripts/quickstart.sh
 
