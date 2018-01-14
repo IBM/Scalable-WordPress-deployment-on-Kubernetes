@@ -32,10 +32,10 @@ This scenario provides instructions for the following tasks:
 - Create local persistent volumes to define persistent disks.
 - Create a secret to protect sensitive data.
 - Create and deploy the WordPress frontend with one or more pods.
-- Create and deploy the MySQL database(either in a container or using Bluemix MySQL as backend).
+- Create and deploy the MySQL database (either in a container or using Bluemix MySQL as backend).
 
 ## Deploy to Bluemix
-If you want to deploy the wordpress directly to Bluemix, click on 'Deploy to Bluemix' button below to create a Bluemix DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
+If you want to deploy the Wordpress directly to Bluemix, click on 'Deploy to Bluemix' button below to create a Bluemix DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
 
 [![Create Toolchain](https://metrics-tracker.mybluemix.net/stats/8201eec1bc017860952416f1cc5666ce/button.svg)](https://console.ng.bluemix.net/devops/setup/deploy/)
 
@@ -113,7 +113,7 @@ Go to Service credentials and view your credentials. Your MySQL hostname, port, 
 
 ![mysql](images/mysql.png)
 
-Modify your `wordpress-deployment.yaml` file, change WORDPRESS_DB_HOST's value to your MySQL hostname and port(i.e. `value: <hostname>:<port>`), WORDPRESS_DB_USER's value to your MySQL user, and WORDPRESS_DB_PASSWORD's value to your MySQL password.
+Modify your `wordpress-deployment.yaml` file, change WORDPRESS_DB_HOST's value to your MySQL hostname and port (i.e. `value: <hostname>:<port>`), WORDPRESS_DB_USER's value to your MySQL user, and WORDPRESS_DB_PASSWORD's value to your MySQL password.
 
 And the environment variables should look like this
 
@@ -131,7 +131,7 @@ And the environment variables should look like this
           value: XMRXTOXTDWOOPXEE
 ```
 
-After you modified the `wordpress-deployment.yaml`, run the following commands to deploy wordpress.
+After you modified the `wordpress-deployment.yaml`, run the following commands to deploy Wordpress.
 
 ```bash
 kubectl create -f wordpress-deployment.yaml
@@ -240,7 +240,7 @@ If you want to delete your persistent volume, you can run the following commands
 kubectl delete -f local-volumes.yaml
 ```
 
-If wordpress is taking a long time, you can debug it by inspecting the logs
+If Wordpress is taking a long time, you can debug it by inspecting the logs
 ```bash
 kubectl get pods # Get the name of the wordpress pod
 kubectl logs [wordpress pod name]
@@ -254,7 +254,7 @@ kubectl logs [wordpress pod name]
 
 Sample Kubernetes Yaml file that includes this package may be configured to track deployments to [IBM Cloud](https://www.bluemix.net/) and other Kubernetes platforms. The following information is sent to a [Deployment Tracker](https://github.com/IBM/metrics-collector-service) service on each deployment:
 
-* Kubernetes Cluster Provider(`IBM Cloud,Minikube,etc`)
+* Kubernetes Cluster Provider(`IBM Cloud, Minikube, etc`)
 * Kubernetes Machine ID
 * Kubernetes Cluster ID (Only from IBM Cloud's cluster)
 * Kubernetes Customer ID (Only from IBM Cloud's cluster)
