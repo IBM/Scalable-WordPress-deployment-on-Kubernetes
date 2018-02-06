@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes.svg?branch=master)](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes)
-![Bluemix Deployments](https://metrics-tracker.mybluemix.net/stats/8201eec1bc017860952416f1cc5666ce/badge.svg)
+![IBM Cloud Deployments](https://metrics-tracker.mybluemix.net/stats/8201eec1bc017860952416f1cc5666ce/badge.svg)
 
 *Read this in other languages: [한국어](README-ko.md).*
 
@@ -9,7 +9,7 @@ This journey showcases the full power of Kubernetes clusters and shows how can w
 
 WordPress represents a typical multi-tier app and each component will have its own container(s). The WordPress containers will be the frontend tier and the MySQL container will be the database/backend tier for WordPress.
 
-In addition to deployment on Kubernetes, we will also show how you can scale the front WordPress tier, as well as how you can use MySQL as a service from Bluemix to be used by WordPress frontend.
+In addition to deployment on Kubernetes, we will also show how you can scale the front WordPress tier, as well as how you can use MySQL as a service from IBM Cloud to be used by WordPress frontend.
 
 ![kube-wordpress](images/kube-wordpress-code.png)
 
@@ -17,13 +17,13 @@ In addition to deployment on Kubernetes, we will also show how you can scale the
 - [WordPress (Latest)](https://hub.docker.com/_/wordpress/)
 - [MySQL (5.6)](https://hub.docker.com/_/mysql/)
 - [Kubernetes Clusters](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)
-- [Bluemix Compose for MySQL](https://console.ng.bluemix.net/catalog/services/compose-for-mysql)
-- [Bluemix DevOps Toolchain Service](https://console.ng.bluemix.net/catalog/services/continuous-delivery)
-- [Bluemix Container Service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
+- [IBM Cloud Compose for MySQL](https://console.ng.bluemix.net/catalog/services/compose-for-mysql)
+- [IBM Cloud DevOps Toolchain Service](https://console.ng.bluemix.net/catalog/services/continuous-delivery)
+- [IBM Cloud Container Service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
 
 ## Prerequisite
 
-Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube) for local testing, with [IBM Bluemix Container Service](https://github.com/IBM/container-journey-template), or [IBM Cloud Private](https://github.com/IBM/deploy-ibm-cloud-private/blob/master/README.md) to deploy in cloud. The code here is regularly tested against [Kubernetes Cluster from Bluemix Container Service](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) using Travis.
+Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube) for local testing, with [IBM IBM Cloud Container Service](https://github.com/IBM/container-journey-template), or [IBM Cloud Private](https://github.com/IBM/deploy-ibm-cloud-private/blob/master/README.md) to deploy in cloud. The code here is regularly tested against [Kubernetes Cluster from IBM Cloud Container Service](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) using Travis.
 
 ## Objectives
 
@@ -32,10 +32,10 @@ This scenario provides instructions for the following tasks:
 - Create local persistent volumes to define persistent disks.
 - Create a secret to protect sensitive data.
 - Create and deploy the WordPress frontend with one or more pods.
-- Create and deploy the MySQL database(either in a container or using Bluemix MySQL as backend).
+- Create and deploy the MySQL database(either in a container or using IBM Cloud MySQL as backend).
 
-## Deploy to Bluemix
-If you want to deploy the wordpress directly to Bluemix, click on 'Deploy to Bluemix' button below to create a Bluemix DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
+## Deploy to IBM Cloud
+If you want to deploy the WordPress directly to IBM Cloud, click on 'Deploy to IBM Cloud' button below to create an IBM Cloud DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
 
 [![Create Toolchain](https://metrics-tracker.mybluemix.net/stats/8201eec1bc017860952416f1cc5666ce/button.svg)](https://console.ng.bluemix.net/devops/setup/deploy/)
 
@@ -131,7 +131,7 @@ And the environment variables should look like this
           value: XMRXTOXTDWOOPXEE
 ```
 
-After you modified the `wordpress-deployment.yaml`, run the following commands to deploy wordpress.
+After you modified the `wordpress-deployment.yaml`, run the following commands to deploy WordPress.
 
 ```bash
 kubectl create -f wordpress-deployment.yaml
@@ -240,7 +240,7 @@ If you want to delete your persistent volume, you can run the following commands
 kubectl delete -f local-volumes.yaml
 ```
 
-If wordpress is taking a long time, you can debug it by inspecting the logs
+If WordPress is taking a long time, you can debug it by inspecting the logs
 ```bash
 kubectl get pods # Get the name of the wordpress pod
 kubectl logs [wordpress pod name]
@@ -254,7 +254,7 @@ kubectl logs [wordpress pod name]
 
 Sample Kubernetes Yaml file that includes this package may be configured to track deployments to [IBM Cloud](https://www.bluemix.net/) and other Kubernetes platforms. The following information is sent to a [Deployment Tracker](https://github.com/IBM/metrics-collector-service) service on each deployment:
 
-* Kubernetes Cluster Provider(`IBM Cloud,Minikube,etc`)
+* Kubernetes Cluster Provider(`IBM Cloud, Minikube, etc`)
 * Kubernetes Machine ID
 * Kubernetes Cluster ID (Only from IBM Cloud's cluster)
 * Kubernetes Customer ID (Only from IBM Cloud's cluster)
