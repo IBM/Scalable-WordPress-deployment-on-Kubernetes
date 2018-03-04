@@ -32,10 +32,10 @@ This scenario provides instructions for the following tasks:
 - Create local persistent volumes to define persistent disks.
 - Create a secret to protect sensitive data.
 - Create and deploy the WordPress frontend with one or more pods.
-- Create and deploy the MySQL database(either in a container or using IBM Cloud MySQL as backend).
+- Create and deploy the MySQL database (either in a container or using IBM Cloud MySQL as backend).
 
 ## Deploy to IBM Cloud
-If you want to deploy the WordPress directly to IBM Cloud, click on 'Deploy to IBM Cloud' button below to create an IBM Cloud DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
+If you want to deploy the WordPress directly to IBM Cloud, click on `Deploy to IBM Cloud` button below to create an IBM Cloud DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
 
 [![Create Toolchain](https://metrics-tracker.mybluemix.net/stats/8201eec1bc017860952416f1cc5666ce/button.svg)](https://console.ng.bluemix.net/devops/setup/deploy/)
 
@@ -113,7 +113,7 @@ Go to Service credentials and view your credentials. Your MySQL hostname, port, 
 
 ![mysql](images/mysql.png)
 
-Modify your `wordpress-deployment.yaml` file, change WORDPRESS_DB_HOST's value to your MySQL hostname and port(i.e. `value: <hostname>:<port>`), WORDPRESS_DB_USER's value to your MySQL user, and WORDPRESS_DB_PASSWORD's value to your MySQL password.
+Modify your `wordpress-deployment.yaml` file, change WORDPRESS_DB_HOST's value to your MySQL hostname and port (i.e. `value: <hostname>:<port>`), WORDPRESS_DB_USER's value to your MySQL user, and WORDPRESS_DB_PASSWORD's value to your MySQL password.
 
 And the environment variables should look like this
 
@@ -254,7 +254,7 @@ kubectl logs [wordpress pod name]
 
 Sample Kubernetes Yaml file that includes this package may be configured to track deployments to [IBM Cloud](https://www.bluemix.net/) and other Kubernetes platforms. The following information is sent to a [Deployment Tracker](https://github.com/IBM/metrics-collector-service) service on each deployment:
 
-* Kubernetes Cluster Provider(`IBM Cloud, Minikube, etc`)
+* Kubernetes Cluster Provider (`IBM Cloud, Minikube, etc`)
 * Kubernetes Machine ID
 * Kubernetes Cluster ID (Only from IBM Cloud's cluster)
 * Kubernetes Customer ID (Only from IBM Cloud's cluster)
@@ -264,7 +264,7 @@ This data is collected from the Kubernetes Job in the sample application's yaml 
 
 ## Disabling Deployment Tracking
 
-Please comment out/remove the Metric Kubernetes Job portion at the end of the 'wordpress-deployment.yaml' file.
+Please comment out/remove the Metric Kubernetes Job portion at the end of the `wordpress-deployment.yaml` file.
 
 
 # License
