@@ -7,13 +7,6 @@ sudo: required
 services:
   - docker
 
-addons:
-  apt:
-    sources:
-      - debian-sid
-    packages:
-      - shellcheck
-
 matrix:
   fast_finish: true
 
@@ -22,6 +15,7 @@ env:
   - TEST_RUN="./tests/test-kubernetes.sh"
 
 before_install:
+  - sudo apt-get install shellcheck
   - pip install -U -r test-requirements.txt
 
 install:
