@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes.svg?branch=master)](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes)
-![IBM Cloud Deployments](https://metrics-tracker.mybluemix.net/stats/8201eec1bc017860952416f1cc5666ce/badge.svg)
 
 *Read this in other languages: [한국어](README-ko.md).*
 
@@ -37,7 +36,7 @@ This scenario provides instructions for the following tasks:
 ## Deploy to IBM Cloud
 If you want to deploy the WordPress directly to IBM Cloud, click on `Deploy to IBM Cloud` button below to create an IBM Cloud DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
 
-[![Create Toolchain](https://metrics-tracker.mybluemix.net/stats/8201eec1bc017860952416f1cc5666ce/button.svg)](https://console.ng.bluemix.net/devops/setup/deploy/)
+[![Create Toolchain](https://bluemix.net/deploy/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/)
 
 Please follow the [Toolchain instructions](https://github.com/IBM/container-journey-template/blob/master/Toolchain_Instructions_new.md) to complete your toolchain and pipeline.
 
@@ -166,7 +165,7 @@ You can obtain your cluster's IP address using
 $ bx cs workers <your_cluster_name>
 OK
 ID                                                 Public IP        Private IP     Machine Type   State    Status   
-kube-hou02-pa817264f1244245d38c4de72fffd527ca-w1   169.47.220.142   10.10.10.57    free           normal   Ready 
+kube-hou02-pa817264f1244245d38c4de72fffd527ca-w1   169.47.220.142   10.10.10.57    free           normal   Ready
 ```
 
 You will also need to run the following command to get your NodePort number.
@@ -249,22 +248,6 @@ kubectl logs [wordpress pod name]
 
 # References
 - This WordPress example is based on Kubernetes's open source example [mysql-wordpress-pd](https://github.com/kubernetes/kubernetes/tree/master/examples/mysql-wordpress-pd) at https://github.com/kubernetes/kubernetes/tree/master/examples/mysql-wordpress-pd.
-
-# Privacy Notice
-
-Sample Kubernetes Yaml file that includes this package may be configured to track deployments to [IBM Cloud](https://www.bluemix.net/) and other Kubernetes platforms. The following information is sent to a [Deployment Tracker](https://github.com/IBM/metrics-collector-service) service on each deployment:
-
-* Kubernetes Cluster Provider (`IBM Cloud, Minikube, etc`)
-* Kubernetes Machine ID
-* Kubernetes Cluster ID (Only from IBM Cloud's cluster)
-* Kubernetes Customer ID (Only from IBM Cloud's cluster)
-* Environment variables in this Kubernetes Job.
-
-This data is collected from the Kubernetes Job in the sample application's yaml file. This data is used by IBM to track metrics around deployments of sample applications to IBM Cloud to measure the usefulness of our examples so that we can continuously improve the content we offer to you. Only deployments of sample applications that include code to ping the Deployment Tracker service will be tracked.
-
-## Disabling Deployment Tracking
-
-Please comment out/remove the Metric Kubernetes Job portion at the end of the `wordpress-deployment.yaml` file.
 
 
 # License
