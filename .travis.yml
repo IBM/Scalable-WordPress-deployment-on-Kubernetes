@@ -4,6 +4,13 @@ python: 2.7
 cache: pip
 sudo: required
 
+notifications:
+  slack:
+    rooms:
+      secure: "qb8F4QsJ6O6ygzZLDnp0ifmG6x8AX0Ne2KvuNOEjLwFeh45uYCMm4Ni1uiqryItyea3vZ7VOWdiR6hbBpVdXo0B3cOLDgQixQa8L89z9gQWocq7M0wo7RI9p3tGfBQ4xfNTPPLp9wzQ077h+8rXzSp6dbkWrUpUX3GEtcTz5B9rHasASGo4+azmvbdUa3CCv2MRVTEaftwBaf/F6CvMnxJdOFwd2tcFGs6sxQnWPbKEKWKqGyBqI347VcMYTmy9xmSQh8hMMxnzvYIyWFj2uTH6vYqBsMfAaI2nwBFKFVE9LzdKicoGdtzvC8hfEOC5gzORhBL3aQk4q7uhT39Cm7KcV+1/c391EuamyUAqtjPOCR3DS2CThaIEjYwi5xRMkWxqv9kZegb9vnd5BAjD6bYprZmuX6hkiaiKWPdiL3oxS8dyQG0h+rpBy1AUsDP4U7frK6QSaRHCtfx9eHncJvRxgX40D3YEGwPmHldGcSn/V6x2NyZFRAACxklzsn1vb//cjBr502w4nn1TeWLSnw3x9MdG3ZtZ8NjmeoXiN/nrQzd24l5PSysLPt/5W3t8GuQtaSzlVBXuYtNzBu9p0S2755KDXYA51SmZq8CV/T+0WPErLMLet/VJece4hThUgXdQHsIuayQzIGIozTFqe2/oOErOWYQ83MdC1vZ0PLxw="
+    on_pull_requests: false
+    on_sucess: change
+
 services:
   - docker
 
