@@ -22,7 +22,7 @@ In addition to deployment on Kubernetes, we will also show how you can scale the
 
 ## Prerequisite
 
-Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube) for local testing, with [IBM IBM Cloud Container Service](https://github.com/IBM/container-journey-template), or [IBM Cloud Private](https://github.com/IBM/deploy-ibm-cloud-private/blob/master/README.md) to deploy in cloud. The code here is regularly tested against [Kubernetes Cluster from IBM Cloud Container Service](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) using Travis.
+Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube) for local testing, with [IBM Cloud Container Service](https://github.com/IBM/container-journey-template), or [IBM Cloud Private](https://github.com/IBM/deploy-ibm-cloud-private/blob/master/README.md) to deploy in cloud. The code here is regularly tested against [Kubernetes Cluster from IBM Cloud Container Service](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) using Travis.
 
 ## Objectives
 
