@@ -17,20 +17,16 @@ services:
 matrix:
   fast_finish: true
 
-env:
-  - TEST_RUN="./tests/test-kubeadm-dind-cluster.sh"
-  - TEST_RUN="./tests/test-kubernetes.sh"
-
 before_install:
   - sudo apt-get install shellcheck
   - pip install -U -r test-requirements.txt
-
-install:
-  - "./scripts/install.sh"
-  - "./scripts/bx_auth.sh"
+  - git clone https://github.com/IBM/pattern-ci
 
 before_script:
-  - "./tests/test-shellcheck.sh"
-  - "./tests/test-yamllint.sh"
+  - "./pattern-ci/tests/shellcheck-lint.sh"
+  - "./pattern-ci/tests/yaml-lint.sh"
 
-script: "$TEST_RUN"
+jobs:
+  include:
+    - install: ./pattern-ci/scripts/install-minikube.sh
+      script: ./tests/deploy-minikube.sh

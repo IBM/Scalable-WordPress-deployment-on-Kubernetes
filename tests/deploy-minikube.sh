@@ -1,14 +1,7 @@
 #!/bin/bash -e
 
 # shellcheck disable=SC1090
-source "$(dirname "$0")"/../scripts/resources.sh
-
-setup_dind-cluster() {
-wget https://cdn.rawgit.com/Mirantis/kubeadm-dind-cluster/master/fixed/dind-cluster-v1.8.sh
-chmod 0755 dind-cluster-v1.8.sh
-./dind-cluster-v1.8.sh up
-export PATH="$HOME/.kubeadm-dind-cluster:$PATH"
-}
+source "$(dirname "$0")"/../pattern-ci/scripts/resources.sh
 
 kubectl_deploy() {
     echo "Running scripts/quickstart.sh"
@@ -30,15 +23,13 @@ kubectl_deploy() {
 
 verify_deploy(){
     echo "Verifying deployment was successful"
-    if ! curl -sS http://127.0.0.1:8080/version; then
+    if ! curl -sS "$(minikube service --url wordpress)"; then
         test_failed "$0"
     fi
 }
 
 main(){
-    if ! setup_dind-cluster; then
-        test_failed "$0"
-    elif ! kubectl_deploy; then
+    if ! kubectl_deploy; then
         test_failed "$0"
     elif ! verify_deploy; then
         test_failed "$0"

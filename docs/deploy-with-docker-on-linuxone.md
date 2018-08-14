@@ -14,7 +14,7 @@ LinuxONE was built for open source so you can harness the agility of the open re
 
 ## Prerequisites
 
-Register at [LinuxONE Communinity Cloud](https://developer.ibm.com/linuxone/) for a trial account.
+Register at [LinuxONE Community Cloud](https://developer.ibm.com/linuxone/) for a trial account.
 We will be using a Ret Hat base image for this journey, so be sure to chose the
 red 'Request your trial' button on the lower left side of this page:
 ![testdrive](../images/linuxone_testdrive.png)
@@ -62,7 +62,7 @@ sudo pip install docker-compose
 ### 3. Run and install WordPress
 
 Now that we have docker-compose installed, we will create a docker-compose.yml
-file.  This will specifiy a couple of containers from the Docker Store that
+file.  This will specify a couple of containers from the Docker Store that
 have been specifically written for z systems.
 
 ```text
