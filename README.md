@@ -15,14 +15,14 @@ In addition to deployment on Kubernetes, we will also show how you can scale the
 ## Included Components
 - [WordPress (Latest)](https://hub.docker.com/_/wordpress/)
 - [MySQL (5.6)](https://hub.docker.com/_/mysql/)
-- [Kubernetes Clusters](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)
-- [IBM Cloud Compose for MySQL](https://console.ng.bluemix.net/catalog/services/compose-for-mysql)
-- [IBM Cloud DevOps Toolchain Service](https://console.ng.bluemix.net/catalog/services/continuous-delivery)
-- [IBM Cloud Container Service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
+- [Kubernetes Clusters](https://cloud.ibm.com/docs/containers/cs_ov.html#cs_ov)
+- [IBM Cloud Compose for MySQL](https://cloud.ibm.com/catalog/services/compose-for-mysql)
+- [IBM Cloud DevOps Toolchain Service](https://cloud.ibm.com/catalog/services/continuous-delivery)
+- [IBM Cloud Container Service](https://cloud.ibm.com/catalog?taxonomyNavigation=apps&category=containers)
 
 ## Prerequisite
 
-Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube) for local testing, with [IBM Cloud Container Service](https://github.com/IBM/container-journey-template), or [IBM Cloud Private](https://github.com/IBM/deploy-ibm-cloud-private/blob/master/README.md) to deploy in cloud. The code here is regularly tested against [Kubernetes Cluster from IBM Cloud Container Service](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) using Travis.
+Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/setup/minikube/) for local testing, with [IBM Cloud Container Service](https://github.com/IBM/container-journey-template), or [IBM Cloud Private](https://github.com/IBM/deploy-ibm-cloud-private/blob/master/README.md) to deploy in cloud. The code here is regularly tested against [Kubernetes Cluster from IBM Cloud Container Service](https://cloud.ibm.com/docs/containers/cs_ov.html#cs_ov) using Travis.
 
 ## Objectives
 
@@ -36,7 +36,7 @@ This scenario provides instructions for the following tasks:
 ## Deploy to IBM Cloud
 If you want to deploy the WordPress directly to IBM Cloud, click on `Deploy to IBM Cloud` button below to create an IBM Cloud DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
 
-[![Create Toolchain](https://bluemix.net/deploy/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/)
+[![Create Toolchain](https://cloud.ibm.com/devops/setup/deploy/button.png)](https://cloud.ibm.com/devops/getting-started)
 
 Please follow the [Toolchain instructions](https://github.com/IBM/container-journey-template/blob/master/Toolchain_Instructions_new.md) to complete your toolchain and pipeline.
 
@@ -106,7 +106,7 @@ Now please move on to [Accessing the External Link](#4-accessing-the-external-wo
 
 ### 3.2 Using Bluemix MySQL as backend
 
-Provision Compose for MySQL in Bluemix via https://console.ng.bluemix.net/catalog/services/compose-for-mysql
+Provision Compose for MySQL in Bluemix via https://cloud.ibm.com/catalog/services/compose-for-mysql
 
 Go to Service credentials and view your credentials. Your MySQL hostname, port, user, and password are under your credential uri and it should look like this
 
@@ -164,7 +164,7 @@ You can obtain your cluster's IP address using
 ```bash
 $ bx cs workers <your_cluster_name>
 OK
-ID                                                 Public IP        Private IP     Machine Type   State    Status   
+ID                                                 Public IP        Private IP     Machine Type   State    Status
 kube-hou02-pa817264f1244245d38c4de72fffd527ca-w1   169.47.220.142   10.10.10.57    free           normal   Ready
 ```
 
@@ -251,6 +251,6 @@ kubectl logs [wordpress pod name]
 
 
 # License
-This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](http://www.apache.org/licenses/LICENSE-2.0.txt).
+This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-[Apache Software License (ASL) FAQ](http://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
+[Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
