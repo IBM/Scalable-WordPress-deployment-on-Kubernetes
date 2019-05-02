@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes.svg?branch=master)](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes)
 
-*Read this in other languages: [한국어](README-ko.md).*
+*Read this in other languages: [한국어](README-ko.md) / [日本語](README-jp.md).*
 
 # Scalable WordPress deployment on Kubernetes Cluster
 
@@ -45,7 +45,7 @@ Please follow the [Toolchain instructions](https://github.com/IBM/container-jour
 2. [Create local persistent volumes](#2-create-local-persistent-volumes)
 3. [Create Services and Deployments for WordPress and MySQL](#3-create-services-and-deployments-for-wordpress-and-mysql)
   - 3.1 [Using MySQL in container](#31-using-mysql-in-container)
-  - 3.2 [Using Bluemix MySQL](#32-using-bluemix-mysql-as-backend)
+  - 3.2 [Using IBM Cloud MySQL](#32-using-ibm-cloud-mysql-as-backend)
 4. [Accessing the external WordPress link](#4-accessing-the-external-wordpress-link)
 5. [Using WordPress](#5-using-wordpress)
 
@@ -65,19 +65,19 @@ tr -d '\n' <password.txt >.strippedpassword.txt && mv .strippedpassword.txt pass
 # 2. Create Local Persistent Volumes
 To save your data beyond the lifecycle of a Kubernetes pod, you will want to create persistent volumes for your MySQL and Wordpress applications to attach to.
 
-#### For "lite" IBM Bluemix Container Service
+#### For "lite" IBM Cloud Kubernetes Service
 Create the local persistent volumes manually by running
 ```bash
 kubectl create -f local-volumes.yaml
 ```
-#### For paid IBM Bluemix Container Service OR Minikube
+#### For paid IBM Cloud Kubernetes Service OR Minikube
 Persistent volumes are created dynamically for you when the MySQL and Wordpress applications are deployed. No action is needed.
 
 # 3. Create Services and deployments for WordPress and MySQL
 
 ### 3.1 Using MySQL in container
 
-> *Note:* If you want to use Bluemix Compose-MySql as your backend, please go to [Using Bluemix MySQL as backend](#32-using-bluemix-mysql-as-backend).
+> *Note:* If you want to use IBMCloud Compose-MySql as your backend, please go to [Using Bluemix MySQL as backend](#32-using-bluemix-mysql-as-backend).
 
 Install persistent volume on your cluster's local storage. Then, create the secret and services for MySQL and WordPress.
 
@@ -104,9 +104,9 @@ wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
 
 Now please move on to [Accessing the External Link](#4-accessing-the-external-wordpress-link).
 
-### 3.2 Using Bluemix MySQL as backend
+### 3.2 Using IBM Cloud MySQL as backend
 
-Provision Compose for MySQL in Bluemix via https://cloud.ibm.com/catalog/services/compose-for-mysql
+Provision Compose for MySQL in IBM Cloud via https://cloud.ibm.com/catalog/services/compose-for-mysql
 
 Go to Service credentials and view your credentials. Your MySQL hostname, port, user, and password are under your credential uri and it should look like this
 
