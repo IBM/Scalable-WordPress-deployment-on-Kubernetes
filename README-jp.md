@@ -46,7 +46,7 @@ WordPressを直接IBM Cloudへデプロイしたい場合は、下の`Deploy to 
 3. [WordPressとMySQLのサービス/デプロイメントの作成と配布](#3-WordPressとMySQLのサービス/デプロイメントの作成と配布)
   - 3.1 [コンテナ内でMySQLを使用する](#31-コンテナ内でMySQLを使用する)
   - 3.2 [バックエンドとしてIBM Cloud MySQLを使用する](#32-バックエンドとしてIBM-Cloud-MySQLを使用する)
-4. [外部のWordPressリンクにアクセする](#4-外部のWordPressリンクにアクセする)
+4. [外部のWordPressリンクにアクセスする](#4-外部のWordPressリンクにアクセスする)
 5. [WordPressを使用する](#5-WordPressを使用する)
 
 # 1. MySQL シークレットの設定
@@ -176,7 +176,7 @@ wordpress   10.10.10.57   <nodes>       80:30180/TCP   2m
 
 > **Note:** 上記の例では、リンクは次のようになります http://169.47.220.142:30180
 
-Kubernetes UIでdeploymentのステータスを確認することができます。`kubectl proxy`を実行し、URL 'http://127.0.0.1:8001/ui'に移動して、WordPressコンテナの準備が整ったことを確認します。
+Kubernetes UIでdeploymentのステータスを確認することができます。`kubectl proxy`を実行し、URL 'http://127.0.0.1:8001/ui' に移動して、WordPressコンテナの準備が整ったことを確認します。
 
 ![Kubernetes Status Page](images/kube_ui.png)
 
