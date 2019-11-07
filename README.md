@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes.svg?branch=master)](https://travis-ci.org/IBM/Scalable-WordPress-deployment-on-Kubernetes)
 
-*Read this in other languages: [한국어](README-ko.md).*
+*Read this in other languages: [한국어](README-ko.md) / [日本語](README-jp.md).*
 
 # Scalable WordPress deployment on Kubernetes Cluster
 
@@ -15,14 +15,14 @@ In addition to deployment on Kubernetes, we will also show how you can scale the
 ## Included Components
 - [WordPress (Latest)](https://hub.docker.com/_/wordpress/)
 - [MySQL (5.6)](https://hub.docker.com/_/mysql/)
-- [Kubernetes Clusters](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)
-- [IBM Cloud Compose for MySQL](https://console.ng.bluemix.net/catalog/services/compose-for-mysql)
-- [IBM Cloud DevOps Toolchain Service](https://console.ng.bluemix.net/catalog/services/continuous-delivery)
-- [IBM Cloud Container Service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
+- [Kubernetes Clusters](https://cloud.ibm.com/docs/containers/cs_ov.html#cs_ov)
+- [IBM Cloud Compose for MySQL](https://cloud.ibm.com/catalog/services/compose-for-mysql)
+- [IBM Cloud DevOps Toolchain Service](https://cloud.ibm.com/catalog/services/continuous-delivery)
+- [IBM Cloud Container Service](https://cloud.ibm.com/catalog?taxonomyNavigation=apps&category=containers)
 
 ## Prerequisite
 
-Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube) for local testing, with [IBM Cloud Container Service](https://github.com/IBM/container-journey-template), or [IBM Cloud Private](https://github.com/IBM/deploy-ibm-cloud-private/blob/master/README.md) to deploy in cloud. The code here is regularly tested against [Kubernetes Cluster from IBM Cloud Container Service](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) using Travis.
+Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/setup/minikube/) for local testing, with [IBM Cloud Container Service](https://github.com/IBM/container-journey-template), or [IBM Cloud Private](https://github.com/IBM/deploy-ibm-cloud-private/blob/master/README.md) to deploy in cloud. The code here is regularly tested against [Kubernetes Cluster from IBM Cloud Container Service](https://cloud.ibm.com/docs/containers/cs_ov.html#cs_ov) using Travis.
 
 ## Objectives
 
@@ -36,7 +36,7 @@ This scenario provides instructions for the following tasks:
 ## Deploy to IBM Cloud
 If you want to deploy the WordPress directly to IBM Cloud, click on `Deploy to IBM Cloud` button below to create an IBM Cloud DevOps service toolchain and pipeline for deploying the WordPress sample, else jump to [Steps](##steps)
 
-[![Create Toolchain](https://bluemix.net/deploy/button.png)](https://console.ng.bluemix.net/devops/setup/deploy/)
+[![Create Toolchain](https://cloud.ibm.com/devops/setup/deploy/button.png)](https://cloud.ibm.com/devops/getting-started)
 
 Please follow the [Toolchain instructions](https://github.com/IBM/container-journey-template/blob/master/Toolchain_Instructions_new.md) to complete your toolchain and pipeline.
 
@@ -45,7 +45,7 @@ Please follow the [Toolchain instructions](https://github.com/IBM/container-jour
 2. [Create local persistent volumes](#2-create-local-persistent-volumes)
 3. [Create Services and Deployments for WordPress and MySQL](#3-create-services-and-deployments-for-wordpress-and-mysql)
   - 3.1 [Using MySQL in container](#31-using-mysql-in-container)
-  - 3.2 [Using Bluemix MySQL](#32-using-bluemix-mysql-as-backend)
+  - 3.2 [Using IBM Cloud MySQL](#32-using-ibm-cloud-mysql-as-backend)
 4. [Accessing the external WordPress link](#4-accessing-the-external-wordpress-link)
 5. [Using WordPress](#5-using-wordpress)
 
@@ -65,19 +65,19 @@ tr -d '\n' <password.txt >.strippedpassword.txt && mv .strippedpassword.txt pass
 # 2. Create Local Persistent Volumes
 To save your data beyond the lifecycle of a Kubernetes pod, you will want to create persistent volumes for your MySQL and Wordpress applications to attach to.
 
-#### For "lite" IBM Bluemix Container Service
+#### For "lite" IBM Cloud Kubernetes Service
 Create the local persistent volumes manually by running
 ```bash
 kubectl create -f local-volumes.yaml
 ```
-#### For paid IBM Bluemix Container Service OR Minikube
+#### For paid IBM Cloud Kubernetes Service OR Minikube
 Persistent volumes are created dynamically for you when the MySQL and Wordpress applications are deployed. No action is needed.
 
 # 3. Create Services and deployments for WordPress and MySQL
 
 ### 3.1 Using MySQL in container
 
-> *Note:* If you want to use Bluemix Compose-MySql as your backend, please go to [Using Bluemix MySQL as backend](#32-using-bluemix-mysql-as-backend).
+> *Note:* If you want to use IBMCloud Compose-MySql as your backend, please go to [Using Bluemix MySQL as backend](#32-using-bluemix-mysql-as-backend).
 
 Install persistent volume on your cluster's local storage. Then, create the secret and services for MySQL and WordPress.
 
@@ -104,9 +104,9 @@ wordpress-mysql-2569670970-bd07b   1/1       Running   0          1m
 
 Now please move on to [Accessing the External Link](#4-accessing-the-external-wordpress-link).
 
-### 3.2 Using Bluemix MySQL as backend
+### 3.2 Using IBM Cloud MySQL as backend
 
-Provision Compose for MySQL in Bluemix via https://console.ng.bluemix.net/catalog/services/compose-for-mysql
+Provision Compose for MySQL in IBM Cloud via https://cloud.ibm.com/catalog/services/compose-for-mysql
 
 Go to Service credentials and view your credentials. Your MySQL hostname, port, user, and password are under your credential uri and it should look like this
 
@@ -164,7 +164,7 @@ You can obtain your cluster's IP address using
 ```bash
 $ bx cs workers <your_cluster_name>
 OK
-ID                                                 Public IP        Private IP     Machine Type   State    Status   
+ID                                                 Public IP        Private IP     Machine Type   State    Status
 kube-hou02-pa817264f1244245d38c4de72fffd527ca-w1   169.47.220.142   10.10.10.57    free           normal   Ready
 ```
 
@@ -251,4 +251,6 @@ kubectl logs [wordpress pod name]
 
 
 # License
-[Apache 2.0](LICENSE)
+This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
+
+[Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
