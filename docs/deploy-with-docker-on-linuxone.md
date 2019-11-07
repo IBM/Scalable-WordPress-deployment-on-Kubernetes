@@ -87,7 +87,7 @@ services:
       MYSQL_ROOT_PASSWORD: example
 ```
 
-And finally, run docker-compose (from the same directory you created the `.yml`)
+And finally, run docker-compose (from the same directory you created the `.sh`)
 
 ```text
 sudo docker-compose up -d
