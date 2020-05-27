@@ -1,23 +1,23 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress
+  name: wordpress-c
   labels:
-    app: wordpress
+    app: wordpress-c
 spec:
   ports:
     - port: 80
   selector:
-    app: wordpress
-    tier: frontend
+    app: wordpress-c
+    tier: frontend-c
   type: NodePort
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: wp-pv-claim
+  name: wpc-pv-claim
   labels:
-    app: wordpress
+    app: wordpress-c
 spec:
   accessModes:
     - ReadWriteOnce
@@ -25,43 +25,42 @@ spec:
     requests:
       storage: 20Gi
 ---
-apiVersion: apps/v1 #versions before 1.9.0 use apps/v1beta2
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: wordpress
+  name: wordpress-c
   labels:
-    app: wordpress
+    app: wordpress-c
 spec:
   selector:
     matchLabels:
-      app: wordpress
-      tier: frontend
+      app: wordpress-c
+      tier: frontend-c
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: wordpress
-        tier: frontend
+        app: wordpress-c
+        tier: frontend-c
     spec:
       containers:
       - image: wordpress:latest
-        name: wordpress
+        name: wordpress-c
         env:
         - name: WORDPRESS_DB_HOST
-          value: wordpress-mysql
+          value: <<ENTER YOUR DB HOST>>:<<ENTER DB PORT>>
+        - name: WORDPRESS_DB_USER
+          value: <<ENTER YOUR DB USERNAME>>
         - name: WORDPRESS_DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-pass
-              key: password.txt
+          value: <<ENTER YOUR DB PASSWORD FROM COMPOSE>>
         ports:
         - containerPort: 80
-          name: wordpress
+          name: wordpress-c
         volumeMounts:
-        - name: wordpress-persistent-storage
+        - name: wordpress-c-persistent-storage
           mountPath: /var/www/html
       volumes:
-      - name: wordpress-persistent-storage
+      - name: wordpress-c-persistent-storage
         persistentVolumeClaim:
-          claimName: wp-pv-claim
+          claimName: wpc-pv-claim

@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-volume-3
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /tmp/data/lv-3
+  persistentVolumeReclaimPolicy: Recycle
