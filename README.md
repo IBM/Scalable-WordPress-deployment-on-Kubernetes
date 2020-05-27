@@ -216,7 +216,7 @@ wordpress-3772071710-58mmd         1/1       Running   0          17s
 You can obtain your cluster's IP address using
 
 ```bash
-$ ibmcloud ks workers <your_cluster_name>
+$ ibmcloud ks workers --cluster <your_cluster_name>
 OK
 ID                                                 Public IP        Private IP     Machine Type   State    Status
 kube-hou02-pa817264f1244245d38c4de72fffd527ca-w1   169.47.220.142   10.10.10.57    free           normal   Ready
