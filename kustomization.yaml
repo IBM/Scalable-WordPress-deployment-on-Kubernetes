@@ -1,7 +1,8 @@
+---
 secretGenerator:
-- name: mysql-pass
-  files:
-  - password.txt
+  - name: mysql-pass
+    files:
+      - password.txt
 resources:
   - local-volumes.yaml
   - mysql-deployment.yaml
