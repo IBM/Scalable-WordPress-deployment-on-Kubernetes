@@ -18,11 +18,14 @@ kubectl_deploy() {
         echo "...$i * 10 seconds elapsed..."
         ((i++))
     done
+    kubectl get pods
     echo "All pods are running"
 }
 
 verify_deploy(){
-    echo "Verifying deployment was successful"
+    echo "Verifying deployment..."
+    kubectl get services
+    sleep 15
     if ! curl -sS "$(minikube service --url wordpress)"; then
         test_failed "$0"
     fi
