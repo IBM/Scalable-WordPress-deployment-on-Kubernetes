@@ -16,7 +16,7 @@ services:
 before_install:
   - sudo apt-get install shellcheck
   - pip install -U -r test-requirements.txt
-  - git clone --single-branch --depth=1 --branch update-minikube https://github.com/IBM/pattern-ci
+  - git clone https://github.com/IBM/pattern-ci
 
 before_script:
   - "./pattern-ci/tests/shellcheck-lint.sh"
