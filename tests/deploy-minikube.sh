@@ -25,7 +25,7 @@ kubectl_deploy() {
 verify_deploy(){
     echo "Verifying deployment..."
     kubectl get services
-    sleep 15
+    sleep 60
     if ! curl -sS "$(minikube service --url wordpress)"; then
         test_failed "$0"
     fi
