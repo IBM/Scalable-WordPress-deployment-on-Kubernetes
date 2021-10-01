@@ -5,6 +5,7 @@ metadata:
   name: wordpress
   labels:
     app: wordpress
+    tier: frontend
 spec:
   ports:
     - port: 80
@@ -32,6 +33,7 @@ metadata:
   name: wordpress
   labels:
     app: wordpress
+    tier: frontend
 spec:
   selector:
     matchLabels:
@@ -57,7 +59,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: mysql-pass
-                  key: password.txt
+                  key: password
           ports:
             - containerPort: 80
               name: wordpress
