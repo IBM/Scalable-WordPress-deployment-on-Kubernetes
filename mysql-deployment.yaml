@@ -9,7 +9,6 @@ spec:
   - port: 3306
   selector:
     app: wordpress-mysql
-  clusterIP: None
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -32,6 +31,8 @@ spec:
       - image: mysql:5.6
         name: mysql
         env:
+        - name: MYSQL_DATABASE
+          value: wordpress
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -61,7 +62,8 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/data"
+    path: "/tmp/mysql/data"
+  persistentVolumeReclaimPolicy: Recycle
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
