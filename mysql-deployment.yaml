@@ -20,7 +20,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: wordpress
+      app: wordpress-mysql
   strategy:
     type: Recreate
   template:
