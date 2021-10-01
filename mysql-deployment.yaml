@@ -9,7 +9,6 @@ spec:
   - port: 3306
   selector:
     app: wordpress
-    tier: mysql
   clusterIP: None
 ---
 apiVersion: apps/v1
@@ -22,14 +21,12 @@ spec:
   selector:
     matchLabels:
       app: wordpress
-      tier: mysql
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: wordpress
-        tier: mysql
     spec:
       containers:
       - image: mysql:5.6
